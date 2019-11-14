@@ -1,0 +1,7 @@
+D:\Work\Project\TLCN.Web\TLCN.Services\bin\Debug\netcoreapp3.0\TLCN.Services.deps.json
+D:\Work\Project\TLCN.Web\TLCN.Services\bin\Debug\netcoreapp3.0\TLCN.Services.dll
+D:\Work\Project\TLCN.Web\TLCN.Services\bin\Debug\netcoreapp3.0\TLCN.Services.pdb
+D:\Work\Project\TLCN.Web\TLCN.Services\obj\Debug\netcoreapp3.0\TLCN.Services.AssemblyInfoInputs.cache
+D:\Work\Project\TLCN.Web\TLCN.Services\obj\Debug\netcoreapp3.0\TLCN.Services.AssemblyInfo.cs
+D:\Work\Project\TLCN.Web\TLCN.Services\obj\Debug\netcoreapp3.0\TLCN.Services.dll
+D:\Work\Project\TLCN.Web\TLCN.Services\obj\Debug\netcoreapp3.0\TLCN.Services.pdb

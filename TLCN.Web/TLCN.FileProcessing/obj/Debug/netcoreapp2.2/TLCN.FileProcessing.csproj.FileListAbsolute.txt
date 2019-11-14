@@ -1,0 +1,17 @@
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.deps.json
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.csproj.CoreCompileInputs.cache
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.AssemblyInfoInputs.cache
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.AssemblyInfo.cs
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.csprojAssemblyReference.cache
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.deps.json
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.AssemblyInfoInputs.cache
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.AssemblyInfo.cs
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
+D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.csprojAssemblyReference.cache

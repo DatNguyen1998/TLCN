@@ -1,0 +1,3 @@
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Release\netcoreapp2.2\TLCN.Common.csprojAssemblyReference.cache
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Release\netcoreapp2.2\TLCN.Common.AssemblyInfoInputs.cache
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Release\netcoreapp2.2\TLCN.Common.AssemblyInfo.cs

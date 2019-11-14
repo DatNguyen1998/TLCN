@@ -1,0 +1,31 @@
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.deps.json
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.csproj.CoreCompileInputs.cache
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfoInputs.cache
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfo.cs
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.json
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.dev.json
+C:\Users\Dat NGUYEN\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.deps.json
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.json
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.dev.json
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfoInputs.cache
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfo.cs
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\ANH DAT\Desktop\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.pdb
+D:\Work\Project\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.deps.json
+D:\Work\Project\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.json
+D:\Work\Project\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.dev.json
+D:\Work\Project\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.dll
+D:\Work\Project\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.pdb
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfoInputs.cache
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfo.cs
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.dll
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.pdb
+D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.csprojAssemblyReference.cache
