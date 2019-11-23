@@ -38,3 +38,16 @@ D:\Work\Project\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.Assembl
 D:\Work\Project\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.csproj.CopyComplete
 D:\Work\Project\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.dll
 D:\Work\Project\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Models.deps.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Models.runtimeconfig.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Models.runtimeconfig.dev.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Models.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Models.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\bin\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.AssemblyInfoInputs.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.AssemblyInfo.cs
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.csproj.CopyComplete
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Models\obj\Debug\netcoreapp2.2\TLCN.Models.pdb

@@ -10,5 +10,6 @@ namespace TLCN.Common
         string ModifiedBy { get; set; }
         string AppService { get; set; }
         DateTimeOffset Modified { get; set; }
+        DateTimeOffset Created { get; set; }
     }
 }

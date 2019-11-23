@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\Project\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj": {}
+    "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj": {}
   },
   "projects": {
-    "D:\\Work\\Project\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj": {
+    "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\Project\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj",
+        "projectUniqueName": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj",
         "projectName": "TLCN.FileProcessing",
-        "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj",
+        "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.FileProcessing\\TLCN.FileProcessing.csproj",
         "packagesPath": "C:\\Users\\ANH DAT\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.FileProcessing\\obj\\",
+        "outputPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.FileProcessing\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

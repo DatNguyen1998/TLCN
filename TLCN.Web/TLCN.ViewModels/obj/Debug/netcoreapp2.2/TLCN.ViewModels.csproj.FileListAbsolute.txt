@@ -20,3 +20,16 @@ D:\Work\Project\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels
 D:\Work\Project\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.csproj.CopyComplete
 D:\Work\Project\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.dll
 D:\Work\Project\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.ViewModels.deps.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.ViewModels.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.ViewModels.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.Models.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.Models.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\bin\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.AssemblyInfoInputs.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.AssemblyInfo.cs
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.csproj.CopyComplete
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.ViewModels\obj\Debug\netcoreapp2.2\TLCN.ViewModels.pdb

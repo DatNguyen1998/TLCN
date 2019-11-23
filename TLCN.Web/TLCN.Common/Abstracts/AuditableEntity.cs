@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
-namespace TLCN.Common
+namespace TLCN.Common.Abstracts
 {
-    public abstract class AuditableEntity: IAuditableEntity
+
+    public abstract class AuditableEntity :  IAuditableEntity
     {
-        [Key]
         public Guid Id { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset Modified { get; set; }
@@ -16,7 +15,7 @@ namespace TLCN.Common
         [StringLength(255)]
         public string ModifiedBy { get; set; }
         [StringLength(255)]
-        public string  AppService { get; set; }
+        public string AppService { get; set; }
         public bool IsActivated { get; set; }
     }
 }

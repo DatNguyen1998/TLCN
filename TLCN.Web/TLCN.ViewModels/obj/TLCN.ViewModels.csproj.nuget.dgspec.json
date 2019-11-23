@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj": {}
+    "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj": {}
   },
   "projects": {
-    "D:\\Work\\Project\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj": {
+    "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\Project\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj",
+        "projectUniqueName": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj",
         "projectName": "TLCN.Common",
-        "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj",
+        "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj",
         "packagesPath": "C:\\Users\\ANH DAT\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Common\\obj\\",
+        "outputPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,10 +41,6 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[8.1.0, )"
-            },
             "EntityFrameworkCore.Extensions": {
               "target": "Package",
               "version": "[1.0.2, )"
@@ -102,14 +98,14 @@
         }
       }
     },
-    "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj": {
+    "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj",
+        "projectUniqueName": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj",
         "projectName": "TLCN.Models",
-        "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj",
+        "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj",
         "packagesPath": "C:\\Users\\ANH DAT\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\obj\\",
+        "outputPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -128,8 +124,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\Work\\Project\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj": {
-                "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj"
+              "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj": {
+                "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Common\\TLCN.Common.csproj"
               }
             }
           }
@@ -145,7 +141,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[8.1.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -196,14 +192,14 @@
         }
       }
     },
-    "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj": {
+    "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
+        "projectUniqueName": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
         "projectName": "TLCN.ViewModels",
-        "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
+        "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
         "packagesPath": "C:\\Users\\ANH DAT\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\obj\\",
+        "outputPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -222,8 +218,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj": {
-                "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj"
+              "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj": {
+                "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj"
               }
             }
           }
@@ -237,10 +233,6 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[2.2.6, )"

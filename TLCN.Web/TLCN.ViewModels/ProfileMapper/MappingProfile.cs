@@ -11,9 +11,7 @@ namespace TLCN.ViewModels.ProfileMapper
         {
             CreateMap<AuthUser, AuthUserViewModel>().ReverseMap();
             CreateMap<Bill, BillViewModel>().ReverseMap();
-            CreateMap<Branch, BranchViewModel>()
-                .ForMember(m => m.ParentName, opt => opt.MapFrom(src => src.Parent.Name))
-                .ForMember(m => m.ParentCode, opt => opt.MapFrom(src => src.Parent.Code));
+            CreateMap<Branch, BranchViewModel>().ReverseMap();
             CreateMap<BranchViewModel, Branch>();
             CreateMap<Cart, CartViewModel>().ReverseMap();
             CreateMap<CartDetail, CartDetailViewModel>().ReverseMap();

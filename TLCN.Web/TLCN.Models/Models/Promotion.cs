@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TLCN.Common;
 using System.ComponentModel.DataAnnotations;
+using TLCN.Common.Abstracts;
 
 namespace TLCN.Models
 {
@@ -14,8 +15,5 @@ namespace TLCN.Models
         public string Name { get; set; }
         public int DisCount { get; set; }   // số giảm giá
         public string Description { get; set; } // mô tả
-        public Guid? BillId { get; set; }
-
-        public virtual Bill Bill { get; set; }
     }
 }

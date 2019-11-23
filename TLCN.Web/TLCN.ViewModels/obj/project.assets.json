@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "AutoMapper/9.0.0": {
+      "AutoMapper/8.1.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
@@ -4541,7 +4541,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "AutoMapper": "8.1.0",
           "EntityFrameworkCore.Extensions": "1.0.2",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.6",
@@ -4563,7 +4562,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "AutoMapper": "9.0.0",
+          "AutoMapper": "8.1.1",
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.EntityFrameworkCore.Design": "2.2.6",
           "Swashbuckle.AspNetCore.Swagger": "4.0.1",
@@ -4583,14 +4582,14 @@
     }
   },
   "libraries": {
-    "AutoMapper/9.0.0": {
-      "sha512": "xCqvoxT4HIrNY/xlXG9W+BA/awdrhWvMTKTK/igkGSRbhOhpl3Q8O8Gxlhzjc9JsYqE7sS6AxgyuUUvZ6R5/Bw==",
+    "AutoMapper/8.1.1": {
+      "sha512": "GKBliBukkLG0z/U0T4Jy+yEpr5bKDImQ9nEy/T8jqNulwNkWDjiEWa9TL4yCxIhleDbmVmw2xYSaJ3Eb2OcSUg==",
       "type": "package",
-      "path": "automapper/9.0.0",
+      "path": "automapper/8.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "automapper.9.0.0.nupkg.sha512",
+        "automapper.8.1.1.nupkg.sha512",
         "automapper.nuspec",
         "lib/net461/AutoMapper.dll",
         "lib/net461/AutoMapper.pdb",
@@ -12362,7 +12361,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "AutoMapper >= 9.0.0",
       "Microsoft.EntityFrameworkCore >= 2.2.6",
       "Microsoft.NETCore.App >= 2.2.0",
       "Swashbuckle.AspNetCore.Swagger >= 4.0.1",
@@ -12380,11 +12378,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
       "projectName": "TLCN.ViewModels",
-      "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
+      "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\TLCN.ViewModels.csproj",
       "packagesPath": "C:\\Users\\ANH DAT\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.ViewModels\\obj\\",
+      "outputPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12403,8 +12401,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj": {
-              "projectPath": "D:\\Work\\Project\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj"
+            "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj": {
+              "projectPath": "C:\\Users\\ANH DAT\\Documents\\GitHub\\TLCN\\TLCN.Web\\TLCN.Models\\TLCN.Models.csproj"
             }
           }
         }
@@ -12418,10 +12416,6 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
-          "AutoMapper": {
-            "target": "Package",
-            "version": "[9.0.0, )"
-          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[2.2.6, )"

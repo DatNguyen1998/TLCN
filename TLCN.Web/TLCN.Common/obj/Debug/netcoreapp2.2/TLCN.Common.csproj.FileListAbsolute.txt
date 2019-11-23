@@ -29,3 +29,13 @@ D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.Assembl
 D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.dll
 D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.pdb
 D:\Work\Project\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.deps.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.runtimeconfig.dev.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\bin\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfoInputs.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.AssemblyInfo.cs
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.Common\obj\Debug\netcoreapp2.2\TLCN.Common.csprojAssemblyReference.cache

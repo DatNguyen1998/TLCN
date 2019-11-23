@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v2.2": {
       "TLCN.Common/1.0.0": {
         "dependencies": {
-          "AutoMapper": "8.1.0",
           "EntityFrameworkCore.Extensions": "1.0.2",
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.EntityFrameworkCore.AutoHistory": "2.1.0",
@@ -20,14 +19,6 @@
         },
         "runtime": {
           "TLCN.Common.dll": {}
-        }
-      },
-      "AutoMapper/8.1.0": {
-        "runtime": {
-          "lib/netstandard2.0/AutoMapper.dll": {
-            "assemblyVersion": "8.1.0.0",
-            "fileVersion": "8.1.0.0"
-          }
         }
       },
       "EntityFrameworkCore.Extensions/1.0.2": {
@@ -144,13 +135,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "AutoMapper/8.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Go75WXHE7p/8CtRaxZnvVEfcSh7xpE6zx9wkgN4I1BxvlzP0hoiTLHSXDYXgv9CoxaRj4ahwzCA/iwdpvyQyOA==",
-      "path": "automapper/8.1.0",
-      "hashPath": "automapper.8.1.0.nupkg.sha512"
     },
     "EntityFrameworkCore.Extensions/1.0.2": {
       "type": "package",

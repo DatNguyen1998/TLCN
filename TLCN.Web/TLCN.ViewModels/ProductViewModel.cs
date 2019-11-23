@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
-using TLCN.Common.Attributes;
-using TLCN.Models;
 
 namespace TLCN.ViewModels
 {
-    [Repository(Action = ActionType.All, Name = "ProductViewModel", RepositoryType = typeof(Product))]
     public class ProductViewModel
     {
+        public Guid Id { get; set; }
         [StringLength(50)]
         public string Code { get; set; }
         public Guid? ProducerId { get; set; }   //Nhà sản xuất => lấy từ MetadataValue

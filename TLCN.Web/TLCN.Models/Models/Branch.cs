@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using TLCN.Common;
+using TLCN.Common.Abstracts;
 
 namespace TLCN.Models
 {

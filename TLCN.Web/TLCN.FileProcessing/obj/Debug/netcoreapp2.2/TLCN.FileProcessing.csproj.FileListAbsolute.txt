@@ -15,3 +15,11 @@ D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FilePr
 D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
 D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
 D:\Work\Project\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.deps.json
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\bin\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.csprojAssemblyReference.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.AssemblyInfoInputs.cache
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.AssemblyInfo.cs
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.dll
+C:\Users\ANH DAT\Documents\GitHub\TLCN\TLCN.Web\TLCN.FileProcessing\obj\Debug\netcoreapp2.2\TLCN.FileProcessing.pdb
