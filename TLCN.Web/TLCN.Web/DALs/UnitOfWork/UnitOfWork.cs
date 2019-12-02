@@ -24,7 +24,6 @@ namespace TLCN.Web.DALs
 
         public IRepository<AuthUser> AuthUserRepository { get; set; }
 
-        public IRepository<Branch> BranchRepository { get; set; }
 
         public IRepository<Cart> CartRepository { get; set; }
 
@@ -41,12 +40,12 @@ namespace TLCN.Web.DALs
         public IRepository<Promotion> PromotionRepository { get; set; }
 
         public IRepository<ReviewProduct> ReviewProductRepository { get; set; }
+        public IRepository<Menu> MenuRepository { get; set; }
 
         private void InitRepository()
         {
             ProductRepository = new Repository<Product>(_context);
             AuthUserRepository = new Repository<AuthUser>(_context);
-            BranchRepository = new Repository<Branch>(_context);
             CartRepository = new Repository<Cart>(_context);
             CartDetailRepository = new Repository<CartDetail>(_context);
             BillRepository = new Repository<Bill>(_context);
@@ -55,6 +54,7 @@ namespace TLCN.Web.DALs
             MetadataValueRepository = new Repository<MetadataValue>(_context);
             PromotionRepository = new Repository<Promotion>(_context);
             ReviewProductRepository = new Repository<ReviewProduct>(_context);
+            MenuRepository = new Repository<Menu>(_context);
         }
 
         protected virtual void Dispose(bool disposing)

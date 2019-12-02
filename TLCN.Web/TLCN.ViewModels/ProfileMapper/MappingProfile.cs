@@ -11,15 +11,22 @@ namespace TLCN.ViewModels.ProfileMapper
         {
             CreateMap<AuthUser, AuthUserViewModel>().ReverseMap();
             CreateMap<Bill, BillViewModel>().ReverseMap();
-            CreateMap<Branch, BranchViewModel>().ReverseMap();
-            CreateMap<BranchViewModel, Branch>();
             CreateMap<Cart, CartViewModel>().ReverseMap();
             CreateMap<CartDetail, CartDetailViewModel>().ReverseMap();
             CreateMap<MetadataType, MetadataTypeViewModel>().ReverseMap();
             CreateMap<MetadataValue, MetadataValueViewModel>().ReverseMap();
             CreateMap<Product, ProductViewModel>().ReverseMap();
+            CreateMap<Product, ProductGridViewModel>().ReverseMap();
             CreateMap<Promotion, PromotionViewModel>().ReverseMap();
             CreateMap<ReviewProduct, ReviewProductViewModel>().ReverseMap();
+            //CreateMap<MetadataValueGetGridViewModel, MetadataValue>()
+            //    .ForMember(e => e.Type.Code, opts => opts.MapFrom(v => v.TypeCode))
+            //   .ForMember(e => e.Type.Name, opts => opts.MapFrom(v => v.TypeName));
+
+            CreateMap<MetadataValue, MetadataValueGetGridViewModel>().ReverseMap();
+            CreateMap<AuthUser, AuthUserGetGridViewModel>().ReverseMap();
+            CreateMap<Menu, MenuViewModel>().ReverseMap();
+            CreateMap<Menu, MenuGridViewModel>().ReverseMap();
         }
 
     }

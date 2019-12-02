@@ -47,10 +47,11 @@ namespace TLCN.Web.Services
             return EntityToViewModel(entity);
         }
 
-        public  IEnumerable<TViewModel> GetAll()
+        public  IEnumerable<TEntity> GetAll(string includes = "")
         {
-            return EntityToViewModel(_repository.Get());
+            return _repository.Get(includes: includes);
         }
+
 
 
         public async Task<TViewModel> UpdateAsync(TViewModel viewModel, object id)
@@ -88,6 +89,14 @@ namespace TLCN.Web.Services
             return Mapper.Map<TViewModel>(entity);
         }
 
-       
+        public IEnumerable<TEntity> FindToEntity(Expression<Func<TEntity, bool>> filter = null, string includes = "")
+        {
+            return _repository.Get(filter, includes: includes);
+        }
+
+        public IEnumerable<TViewModel> FindToViewModel(Expression<Func<TEntity, bool>> filter = null, string includes = "")
+        {
+            return EntityToViewModel(_repository.Get(filter,includes: includes));
+        }
     }
 }

@@ -42,13 +42,13 @@
     <!--<div nz-col [nzLg]="{span: 2, offset: 0}"></div>-->
     <div nz-col [nzSpan]="12">
       <nz-form-item>
-        <nz-form-label [nzSpan]="8">Loại sản phẩm</nz-form-label>
+        <nz-form-label [nzSpan]="8">Danh mục hiển thị</nz-form-label>
         <nz-form-control [nzLg]="{span: 16, offset: 0}">
-          <nz-select id="provinceId" formControlName="productTypeId" nzShowSearch nzDropdownMatchSelectWidth [nzLoading]="isLoading">
-            <nz-option *ngFor="let item of productTypes" [nzValue]="item.id" [nzLabel]="item.code + ' - ' + item.name"></nz-option>
+          <nz-select id="provinceId" formControlName="menuId" nzShowSearch nzDropdownMatchSelectWidth [nzLoading]="isLoading">
+            <nz-option *ngFor="let item of menus" [nzValue]="item.id" [nzLabel]="item.code + ' - ' + item.name"></nz-option>
           </nz-select>
-          <nz-form-explain *ngIf="showExplain('productTypeId', 'required')">
-            Vui lòng chọn loại sản phẩm
+          <nz-form-explain *ngIf="showExplain('menuId', 'required')">
+            Vui lòng chọn danh mục hiển thị
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>

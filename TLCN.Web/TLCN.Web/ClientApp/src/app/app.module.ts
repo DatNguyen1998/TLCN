@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { HttpModule } from '@angular/http';
+import { JwtInterceptor } from './services/helper/Jwt.Interceptor';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+      AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +26,10 @@ registerLocaleData(en);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US , useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

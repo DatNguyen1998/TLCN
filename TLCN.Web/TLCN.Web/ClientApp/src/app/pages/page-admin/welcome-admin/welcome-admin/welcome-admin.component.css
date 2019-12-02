@@ -76,9 +76,24 @@ nz-content {
 .inner-content {
   padding: 24px;
   background: #fff;
-  height: 100%;
+  /* height: 100%; */
+  height: auto;
 }
 
 .p20 {
 padding: 20px;
+}
+
+.header-user-menu {
+  min-width: 150px;
+  text-align: right;
+  float: right !important;
+}
+
+.header-user-menu .name-section {
+  margin-right: 10px;
+}
+
+.header-user-menu nz-avatar i {
+  margin: 0 !important;
 }

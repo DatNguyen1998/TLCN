@@ -10,7 +10,6 @@ namespace TLCN.Web.DALs
     {
         IRepository<Product> ProductRepository { get; }
         IRepository<AuthUser> AuthUserRepository { get; }
-        IRepository<Branch> BranchRepository { get; }
         IRepository<Cart> CartRepository { get; }
         IRepository<CartDetail> CartDetailRepository { get; }
         IRepository<Bill> BillRepository { get; }
@@ -19,6 +18,7 @@ namespace TLCN.Web.DALs
         IRepository<MetadataValue> MetadataValueRepository { get; }
         IRepository<Promotion> PromotionRepository { get; }
         IRepository<ReviewProduct> ReviewProductRepository { get; }
+        IRepository<Menu> MenuRepository { get; }
         Task SaveChangesAsync();
     }
 }

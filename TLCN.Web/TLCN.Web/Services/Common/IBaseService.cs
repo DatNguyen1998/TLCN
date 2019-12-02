@@ -10,7 +10,7 @@ namespace TLCN.Web.Services
         where TEntity : class
         where TViewModel : class
     {
-        IEnumerable<TViewModel> GetAll();
+        IEnumerable<TEntity> GetAll(string includes = "");
         Task CreateAsync(TViewModel viewModel);
 
         Task<TViewModel> UpdateAsync(TViewModel viewModel, object id);
@@ -18,6 +18,8 @@ namespace TLCN.Web.Services
         Task DeleteAsync(object id);
 
         Task<TViewModel> FindByIdAsync(object id);
+        IEnumerable<TEntity> FindToEntity(Expression<Func<TEntity, bool>> filter = null, string includes = "");
+        IEnumerable<TViewModel> FindToViewModel(Expression<Func<TEntity, bool>> filter = null, string includes = "");
 
         Task<TViewModel> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter = null, params Expression<Func<TEntity, object>>[] includes);
     }

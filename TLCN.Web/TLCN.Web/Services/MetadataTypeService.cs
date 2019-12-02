@@ -10,7 +10,7 @@ namespace TLCN.Web.Services
 {
     public interface IMetadataTypeService: IBaseService<MetadataType, MetadataTypeViewModel>
     {
-
+        IEnumerable<MetadataTypeViewModel> filterByName(string name);
     }
     public class MetadataTypeService: BaseService<MetadataType, MetadataTypeViewModel>, IMetadataTypeService
     {
@@ -21,5 +21,9 @@ namespace TLCN.Web.Services
 
         protected override IRepository<MetadataType> _repository => _uow.MetadataTypeRepository;
 
+        public  IEnumerable<MetadataTypeViewModel> filterByName(string name)
+        {
+            return this.FindToViewModel(x => x.Name == name);
+        }
     }
 }

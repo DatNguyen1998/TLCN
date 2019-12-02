@@ -1,6 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { NzModalRef, NzMessageService } from 'ng-zorro-antd';
+import { AuthUserService } from '../../../../services/authUser/auth-user.service';
+import { MetadataValueService } from 'src/app/services/metadataValue/metadata-value.service';
+import { MetadataTypeEnum } from 'src/app/enum/MetadataType.enum';
+import { MetadataTypeService } from '../../../../services/metadataType/metadata-type.service';
+import { Role } from 'src/app/enum/role.enum';
 
 @Component({
   selector: 'app-auth-user-detail',
@@ -13,6 +18,14 @@ export class AuthUserDetailComponent implements OnInit {
 
     authUserForm: FormGroup;
 
+    modelGetData = {
+        Field: '',
+        name: '',
+        typeId: '',
+        provinceId: '',
+        id: '',
+    }
+
     genders: any[] = [];
     provinces: any[] = [];
     districts: any[] = [];
@@ -20,12 +33,15 @@ export class AuthUserDetailComponent implements OnInit {
     districtLoading = false;
     districtDisable = true;
     isLoading = false;  // loading chung
-
+    
 
     constructor(
         private fb: FormBuilder,
         private modal: NzModalRef,
         private msg?: NzMessageService,
+        private metaValueSv?: MetadataValueService,
+        private authSv?: AuthUserService
+
     ) { }
 
     ngOnInit() {
@@ -36,37 +52,111 @@ export class AuthUserDetailComponent implements OnInit {
             username: [, [Validators.required]],
             password: [, [Validators.required]],
             email: [, [Validators.required]],
-            confirmPassword: [, [Validators.required], this.checkConfirmPassWordValidator],
-            birthDate: [, [Validators.required]],
+            confirmPassword: [, [Validators.required]],
+            birthDate: [null, [Validators.required]],
             genderId: [, [Validators.required]],
             phoneNumber: [, [Validators.required]],
             address: [, [Validators.required]],
-            role: [, [Validators.required]],
+            role: [Role.Administrator],
             districtId: [, [Validators.required]],
             provinceId: [, [Validators.required]],
             isActivated: [true],
         });
+
+        this.getData();
+
+        if(this.params.id !== '') {
+            this.getById();
+        }
     }
 
     cancel() {
         this.modal.destroy();
     }
+    onChange(result: Date): void {
+        console.log('onChange: ', result);
+    }
 
-    save() {
+
+    async save() {
         if (!this.authUserForm.invalid) {
-
+            if (this.params.id === '') {
+                const res = await this.authSv.add(this.authUserForm.value);
+                if (res) {
+                    this.msg.success('Thêm thành công');
+                    this.modal.destroy();
+                }
+            }
+            else {
+                const res = await this.authSv.update(this.authUserForm.value);
+                if (res) {
+                    this.msg.success('Sửa thành công');
+                    this.modal.destroy();
+                }
+            }
         }
         else {
             this.validateData(this.authUserForm);
         }
     }
 
-    search() {
-
+    async getById() {
+        try {
+            this.modelGetData.id = this.params.id;
+            const res = await this.authSv.getById(this.modelGetData);
+            this.authUserForm.patchValue(res);
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
 
-    provinceOnchanges() {
+    async getData() {
+        try {
+            //Giới tính     
+            this.modelGetData.Field = MetadataTypeEnum.GENDER;
+            
+            const resGenders = await this.metaValueSv.filter(this.modelGetData);
+            this.genders = resGenders;
+            this.genders.sort();
+            //Tỉnh thành phố
+            this.modelGetData.Field = MetadataTypeEnum.CITY;
+            const resProvince = await this.metaValueSv.filter(this.modelGetData);
+            this.provinces = resProvince;
+            this.provinces.sort(function(a, b) {
+                var textA = a.name.toUpperCase();
+                var textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+        }
+        catch(e) {
+            console.log(e);
+        }
+        finally {
+            this.modelGetData.Field = '';
+            this.modelGetData.name = '';
+            this.modelGetData.typeId = '';
+        }
+   }
 
+    async provinceOnchanges() {
+        try {
+            console.log(this.authUserForm.controls.provinceId.value);
+            this.modelGetData.provinceId = this.authUserForm.controls.provinceId.value;
+            const res = await this.metaValueSv.filter(this.modelGetData);
+            this.districts = res;
+            this.districts.sort(function(a, b) {
+                var textA = a.name.toUpperCase();
+                var textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+        }
+        catch(e) {
+            console.log(e);
+        }
+        finally {
+            this.districtDisable = false;
+        }
     }
 
     validateData(form: any) {

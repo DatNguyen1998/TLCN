@@ -31,8 +31,8 @@
       <nz-form-item>
         <nz-form-label [nzSpan]="8">Loại Metadata </nz-form-label>
         <nz-form-control [nzLg]="{span: 16, offset: 0}">
-          <nz-select id="typeId" formControlName="typeId" nzDropdownMatchSelectWidth [nzLoading]="isLoading">
-            <nz-option *ngFor="let item of metadataTypes " [nzValue]="item.id" [nzLabel]="item.code - item.name"></nz-option>
+          <nz-select formControlName="typeId" nzDropdownMatchSelectWidth>
+            <nz-option *ngFor="let item of metadataTypes " [nzValue]="item.id" [nzLabel]="item.code + ' - ' + item.name"></nz-option>
           </nz-select>
           <nz-form-explain *ngIf="showExplain('typeId', 'required')">
             Vui lòng chọn loại Metadata

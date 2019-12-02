@@ -12,5 +12,11 @@ namespace TLCN.ViewModels
         public string Name { get; set; }
         public Guid? TypeId { get; set; }
         public bool IsActivated { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public DateTimeOffset Modified { get; set; }
+        [StringLength(255)]
+        public string CreatedBy { get; set; }
+        [StringLength(255)]
+        public string ModifiedBy { get; set; }
     }
 }

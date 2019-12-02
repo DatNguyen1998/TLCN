@@ -37,6 +37,22 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var review = await _reviewProductService.FindByIdAsync(model.Id);
+                return Ok(review);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        [HttpPost("[action]")]
         public async Task<IActionResult> Add([FromBody] ReviewProductViewModel model)
         {
             try
@@ -50,7 +66,7 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpPut("[action]")]
+        [HttpPost("[action]")]
         public async Task<ActionResult> Update([FromBody] ReviewProductViewModel model)
         {
             try
@@ -70,12 +86,12 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpDelete("[action]")]
-        public async Task<ActionResult> Delete([FromForm] Guid id)
+        [HttpPost("[action]")]
+        public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try
             {
-                var mode_db = await _reviewProductService.FindByIdAsync(id);
+                var mode_db = await _reviewProductService.FindByIdAsync(model.Id);
                 if (mode_db == null)
                 {
                     return BadRequest("Model is not exists");

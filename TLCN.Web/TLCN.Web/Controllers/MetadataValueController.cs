@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using TLCN.Web.Services;
 using TLCN.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace TLCN.Web.Controllers
 {
@@ -24,13 +25,14 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public IActionResult GetAll()
         {
             try
             {
-                var metadataValues = _metadataValueService.GetAll();
-                return Ok(metadataValues);
+                var metadataValues = _metadataValueService.GetAll("Type");
+                var result = Mapper.Map<IEnumerable<MetadataValueGetGridViewModel>>(metadataValues);
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -39,11 +41,43 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var metadataValue = await _metadataValueService.FindByIdAsync(model.Id);
+                return Ok(metadataValue);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public IActionResult Filter([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var metadataValues =  _metadataValueService.Find(model,"Type");
+                var result = Mapper.Map<IEnumerable<MetadataValueGetGridViewModel>>(metadataValues);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody]MetadataValueViewModel  model)
         {
             try
             {
+                model.Id = new Guid();
                 model.IsActivated = true;
                 await _metadataValueService.CreateAsync(model);
                 return Ok();
@@ -54,8 +88,8 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpPut("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Update([FromBody] MetadataValueViewModel model)
         {
             try
@@ -75,18 +109,18 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpDelete("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
-        public async Task<ActionResult> Delete([FromForm] Guid id)
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try
             {
-                var mode_db = await _metadataValueService.FindByIdAsync(id);
-                if (mode_db == null)
+                var model_db = await _metadataValueService.FindByIdAsync(model.Id);
+                if (model_db == null)
                 {
                     return BadRequest("Model is not exists");
                 }
-                await _metadataValueService.DeleteAsync(mode_db.Id);
+                await _metadataValueService.DeleteAsync(model_db.Id);
                 return Ok();
             }
             catch (Exception e)

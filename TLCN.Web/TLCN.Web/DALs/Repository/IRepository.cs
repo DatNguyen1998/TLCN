@@ -11,10 +11,10 @@ namespace TLCN.Web.DALs
     {
         IEnumerable<TEntity> Get(
         Expression<Func<TEntity, bool>> filter = null,
-        params Expression<Func<TEntity, object>>[] includes);
+        string includes = "");
         Task<IEnumerable<TEntity>> GetAsync(
         Expression<Func<TEntity, bool>> filter = null,
-        params Expression<Func<TEntity, object>>[] includes);
+        string includes = "");
         Task<TEntity> FindByIdAsync(object id);
         void Add(TEntity entity);
         void Delete(object id);

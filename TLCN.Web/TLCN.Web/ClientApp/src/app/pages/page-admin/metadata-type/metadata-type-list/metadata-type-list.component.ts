@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { MetadataTypeDetailComponent } from '../metadata-type-detail/metadata-type-detail.component';
+import { MetadataTypeService } from 'src/app/services/metadataType/metadata-type.service';
 
 @Component({
   selector: 'app-metadata-type-list',
@@ -17,20 +18,40 @@ export class MetadataTypeListComponent implements OnInit {
         keyWord: '',
     }
 
+    modelSearch = {
+        name: '',
+        code: ''
+    }
+
+    modelDelete = {
+        id: ''
+    }
+
     metadataTypes: any[] = [];
 
     constructor(
         private modalService: NzModalService,
         private msg?: NzMessageService,
+        private metaTypeSv?: MetadataTypeService
     )
     { }
 
     ngOnInit() {
-
+        this.getList();
     }
 
-    getList() {
-
+    async getList() {
+        try {
+            this.tableInfo.loading = true;
+            const res: any = await  this.metaTypeSv.getAll();
+            this.metadataTypes = res;
+        }
+        catch(e) {
+            console.log(e);
+        }
+        finally {
+            this.tableInfo.loading = false;
+        }
     }
 
     edit(model: any = null) {
@@ -43,7 +64,7 @@ export class MetadataTypeListComponent implements OnInit {
             nzContent: MetadataTypeDetailComponent,
             nzComponentParams: {
                 params: {
-                    id: model ? model._id : '',
+                    id: model ? model.id : '',
                 }
             },
             nzFooter: [{
@@ -61,8 +82,46 @@ export class MetadataTypeListComponent implements OnInit {
             }]
         });
         modal.afterClose.subscribe((result) => {
-            this.getList();
+            this.refresh();
         });
+    }
+
+    async deleteRow(id: any) {
+        try {
+            this.modelDelete.id = id;
+            var res: any = await this.metaTypeSv.delete(this.modelDelete);
+            if(res) {
+                this.msg.success('Xóa thành công');
+                this.refresh();
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+
+    async search() {
+        try {
+            this.tableInfo.loading = true;
+            this.modelSearch.name = this.tableInfo.keyWord.trim().toLowerCase();
+            const res = await this.metaTypeSv.findByName(this.modelSearch);
+            this.metadataTypes = res;
+        }
+        catch(e) {
+            console.log(e);
+        }
+        finally {
+            this.tableInfo.loading = false;
+        }
+    }
+
+    refresh() {
+        if (this.tableInfo.keyWord === '') {
+            this.getList();
+        }
+        else {
+            this.search();
+        }
     }
 
 }

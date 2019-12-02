@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,13 +33,14 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministratorRole")]
         public IActionResult GetAll()
         {
             try
             {
-                var authUsers = _authUserService.GetAll();
-                return Ok(authUsers);
+                var authUsers = _authUserService.GetAll("Gender,Province,District");
+                var result = Mapper.Map<IEnumerable<AuthUserGetGridViewModel>>(authUsers);
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -47,11 +49,32 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var authUser = await _authUserService.FindByIdAsync(model.Id);
+                return Ok(authUser);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody] AuthUserViewModel model)
         {
             try
             {
+                //Hash Pass
+                string salt = BCrypt.Net.BCrypt.GenerateSalt();
+                model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password, salt);
+
+                model.Id = new Guid();
                 await _authUserService.CreateAsync(model);
                 return Ok();
             }
@@ -61,8 +84,8 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpPut("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Update([FromBody] AuthUserViewModel model)
         {
             try
@@ -82,13 +105,13 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpDelete("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
-        public async Task<ActionResult> Delete([FromForm] Guid id)
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try
             {
-                var mode_db = await _authUserService.FindByIdAsync(id);
+                var mode_db = await _authUserService.FindByIdAsync(model.Id);
                 if (mode_db == null)
                 {
                     return BadRequest("Model is not exists");
@@ -116,7 +139,6 @@ namespace TLCN.Web.Controllers
                 else
                 {
                     var listRole = Enum.GetValues(typeof(Role)).Cast<Role>().ToList();
-                    string userRole = listRole.FirstOrDefault(x => (int)x == user.Role).ToString();
                     var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_appSetting.Secrect));
                     double tokenExpiryTime = Convert.ToDouble(_appSetting.ExpireTime);
                     var tokenHandler = new JwtSecurityTokenHandler();
@@ -128,7 +150,7 @@ namespace TLCN.Web.Controllers
                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                             new Claim("User_id", Convert.ToString(user.Id)),
                             new Claim("Username", user.Username),
-                            new Claim("Role", userRole),
+                            new Claim("role", user.Role),
                             new Claim("LoggedOn", DateTime.Now.ToString()),
 
                         }),
@@ -140,12 +162,28 @@ namespace TLCN.Web.Controllers
                     };
                     var jwtTokenHandler = new JwtSecurityTokenHandler();
                     var token = jwtTokenHandler.CreateJwtSecurityToken(tokenDescriptor);
-                    return Ok(new { token = tokenHandler.WriteToken(token), expiration = token.ValidTo, username = user.Username, role = userRole, userId = user.Id, name = user.Fullname});
+                    return Ok(new { token = tokenHandler.WriteToken(token), expiration = token.ValidTo, username = user.Username, role = user.Role, userId = user.Id, name = user.Fullname});
                 }
             }
             catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public IActionResult Filter([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var authUsers = _authUserService.Find(model, "Gender,Province,District");
+                var result = Mapper.Map<IEnumerable<AuthUserGetGridViewModel>>(authUsers);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }

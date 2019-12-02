@@ -25,7 +25,7 @@ namespace TLCN.Web.Controllers
 
 
         [HttpGet("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public IActionResult GetAll()
         {
             try
@@ -41,11 +41,44 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var metadataType = await _metadataTypeService.FindByIdAsync(model.Id);
+                return Ok(metadataType);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public IActionResult FindByName([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var metadataTypes = _metadataTypeService.filterByName(model.Name);
+                return Ok(metadataTypes);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody] MetadataTypeViewModel model)
         {
             try
             {
+                model.Id = new Guid();
                 model.IsActivated = true;
                 await _metadataTypeService.CreateAsync(model);
                 return Ok();
@@ -57,7 +90,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPut("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Update([FromBody] MetadataTypeViewModel model)
         {
             try
@@ -77,13 +110,13 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpDelete("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
-        public async Task<ActionResult> Delete([FromForm] Guid id)
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try
             {
-                var mode_db = await _metadataTypeService.FindByIdAsync(id);
+                var mode_db = await _metadataTypeService.FindByIdAsync(model.Id);
                 if(mode_db == null)
                 {
                     return BadRequest("Model is not exists");
@@ -96,5 +129,7 @@ namespace TLCN.Web.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        
     }
 }

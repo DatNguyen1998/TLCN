@@ -80,8 +80,8 @@ namespace TLCN.Web
             });
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("RequireLoggedIn", policy => policy.RequireRole("admin", "user"));
-                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("admin"));
+                options.AddPolicy("RequireLoggedIn", policy => policy.RequireRole("Administrator", "Member"));
+                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
             });
 
             services.AddDbContext<TLCNDatabaseContext>(
@@ -92,7 +92,6 @@ namespace TLCN.Web
             services.AddScoped<IAuthUserService, AuthUserService>();
             services.AddScoped<IBillDetailService, BillDetailService>();
             services.AddScoped<IBillService, BillService>();
-            services.AddScoped<IBranchService, BranchService>();
             services.AddScoped<ICartDetailService, CartDetailService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IMetadataTypeService, MetadataTypeService>();
@@ -100,6 +99,7 @@ namespace TLCN.Web
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IPromotionService, PromotionService>();
             services.AddScoped<IReviewProductService, ReviewProductService>();
+            services.AddScoped<IMenuService, MenuService>();
 
             services.AddAuthorization(options =>
             {
@@ -140,6 +140,7 @@ namespace TLCN.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseAuthentication();
 
             app.UseSwagger(c =>
             {

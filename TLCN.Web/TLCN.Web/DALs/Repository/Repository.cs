@@ -34,12 +34,14 @@ namespace TLCN.Web.DALs
             _context.Entry(entity).State = EntityState.Deleted;
         }
 
+
         public async Task<TEntity> FindByIdAsync(object id)
         {
             return await _db.FindAsync(id);
+            
         }
 
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, params Expression<Func<TEntity, object>>[] includes)
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, string includes = "")
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
             if(filter != null)
@@ -47,18 +49,17 @@ namespace TLCN.Web.DALs
                 query = query.Where(filter);
             }
 
-            if(includes != null)
+            foreach (var includeProperty in includes.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                foreach(Expression<Func<TEntity, object>> include in includes)
-                {
-                    query = query.Include(include);
-                }
+                query = query.Include(includeProperty);
             }
+
             return query.ToList();
 
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null, params Expression<Func<TEntity, object>>[] includes)
+        public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null, string includes = "")
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
             if (filter != null)
@@ -66,13 +67,12 @@ namespace TLCN.Web.DALs
                 query = query.Where(filter);
             }
 
-            if (includes != null)
+            foreach (var includeProperty in includes.Split
+               (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                foreach (Expression<Func<TEntity, object>> include in includes)
-                {
-                    query = query.Include(include);
-                }
+                query = query.Include(includeProperty);
             }
+
             return query.ToList();
         }
 

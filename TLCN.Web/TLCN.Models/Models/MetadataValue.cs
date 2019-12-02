@@ -15,7 +15,7 @@ namespace TLCN.Models
         public string Name { get; set; }
         public Guid? TypeId { get; set; }
         public Guid? ParentId { get; set; }
-
+      
         public virtual MetadataType Type { get; set; }
         public virtual MetadataValue Parent { get; set; }
 

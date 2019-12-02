@@ -22,7 +22,7 @@
 
     </div>
     <div nz-col nzSpan="2" nzOffset="1">
-      <button nzSize="small" nz-button nzType="primary" (click)="getList()">
+      <button nzSize="small" nz-button nzType="primary" (click)="refresh()">
         <i nz-icon nzType="sync" nzTheme="outline"></i>Refresh
       </button>
     </div>
@@ -32,7 +32,7 @@
 
 <div class="p10"></div>
 
-<nz-table #dataTable [nzData]="metadataTypes" nzShowSizeChanger [nzFrontPagination]="false" [nzLoading]="tableInfo.loading"
+<nz-table #dataTable [nzData]="promotions" nzShowSizeChanger [nzFrontPagination]="false" [nzLoading]="tableInfo.loading"
           [nzTotal]="tableInfo.total" [(nzPageIndex)]="tableInfo.pageIndex" [(nzPageSize)]="tableInfo.pageSize"
           (nzPageIndexChange)="getList()" (nzPageSizeChange)="getList(true)"
           [nzScroll]="{ x: '1060px'}">
@@ -42,6 +42,10 @@
       <th th-default>Tên khuyến mãi</th>
       <th th-default>DisCount</th>
       <th th-default>Mô tả</th>
+      <th th-default>Người tạo</th>
+      <th th-default>Ngày tạo</th>
+      <th th-default>Người sửa</th>
+      <th th-default>Ngày sửa</th>
       <th action nzRight="0px">Thao tác</th>
     </tr>
   </thead>
@@ -51,10 +55,14 @@
       <td>{{data.name}}</td>
       <td>{{data.disCount}}</td>
       <td>{{data.description}}</td>
+      <td>{{ data.createdBy }}</td>
+      <td>{{ data.created | date:'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ data.modifiedBy }}</td>
+      <td>{{ data.modified | date:'dd/MM/yyyy HH:mm' }}</td>
       <td action nzRight="0px">
         <a (click)="edit(data)">Sửa</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a nz-popconfirm nzTitle="Bạn có chắc muốn xóa mục này?" (nzOnConfirm)="deleteRow(data.id)">Xoá</a>
+        <a nz-popconfirm nzTitle="Bạn có chắc muốn xóa mục này?" nzOkText="Đồng ý"  nzCancelText="Hủy" (nzOnConfirm)="deleteRow(data.id)">Xoá</a>
       </td>
     </tr>
   </tbody>

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
@@ -38,13 +39,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\enum\role.enum.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\app\services\common\authentication.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\common\http-client.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\common\storage-helper.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\helper\Jwt.Interceptor.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TLCN.Common\TLCN.Common.csproj" />
     <ProjectReference Include="..\TLCN.Models\TLCN.Models.csproj" />
     <ProjectReference Include="..\TLCN.ViewModels\TLCN.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\services\" />
     <Folder Include="NewFolder\" />
   </ItemGroup>
 

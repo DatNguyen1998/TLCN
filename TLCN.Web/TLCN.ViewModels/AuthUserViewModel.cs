@@ -23,8 +23,9 @@ namespace TLCN.ViewModels
         public string Username { get; set; }//tên đăng nhập
         [StringLength(255)]
         public string Password { get; set; }//pass
-        public int Role { get; set; }   //quyền
+        public string Role { get; set; }   //quyền
         public Guid? DistrictId { get; set; }   // huyện
         public Guid? ProvinceId { get; set; }   //Tỉnh 
+        public bool IsActivated { get; set; }
     }
 }

@@ -9,7 +9,7 @@
               <div class="sidebar-logo">
                 <a routerLink="/admin">
                   <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-                  <h1>Logo not have</h1>
+                  <h1>WebTM</h1>
                 </a>
               </div>
               <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
@@ -32,9 +32,9 @@
                     </a>
                 </li>
                 <li nz-menu-item>
-                    <a routerLink="/admin/branch">
+                    <a routerLink="/admin/menu">
                       <i nz-icon nzType="credit-card" nzTheme="outline"></i>
-                        <span>Chi Nhánh</span>
+                        <span>Menu</span>
                     </a>
                 </li>
                 <li nz-menu-item>
@@ -59,8 +59,18 @@
                          nz-icon
                          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
                       ></i>
+                      <a style="float:right; padding-right: 50px;" nz-dropdown [nzDropdownMenu]="menu">
+                        <nz-avatar nzIcon="user"></nz-avatar>
+                      </a>
+                      <nz-dropdown-menu #menu="nzDropdownMenu" style="width: 100px;">
+                        <ul nz-menu nzSelectable>
+                          <li nz-menu-item (click)="logout()">Logout</li>
+                        </ul>
+                      </nz-dropdown-menu>
                   </span>
+                    
                 </div>
+               
               </nz-header>
               <nz-content>
                 <div class="inner-content" >

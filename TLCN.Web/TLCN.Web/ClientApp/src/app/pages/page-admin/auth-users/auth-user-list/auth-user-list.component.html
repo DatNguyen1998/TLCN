@@ -22,7 +22,7 @@
 
     </div>
     <div nz-col nzSpan="2" nzOffset="1">
-      <button nzSize="small" nz-button nzType="primary" (click)="getList()">
+      <button nzSize="small" nz-button nzType="primary" (click)="refresh()">
         <i nz-icon nzType="sync" nzTheme="outline"></i>Refresh
       </button>
     </div>
@@ -42,7 +42,6 @@
       <th th-default>Tên</th>
       <th th-default>Email</th>
       <th th-default>Username</th>
-      <th th-default>Password</th>
       <th th-default>Admin</th>
       <th th-default>Hoạt động</th>
       <th th-default>Giới tính</th>
@@ -58,11 +57,11 @@
       <td>{{data.fullname}}</td>
       <td>{{data.email}}</td>
       <td>{{data.username}}</td>
-      <td>{{data.password}}</td>
       <td><div style="text-align: center"><i *ngIf="data.role" i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i></div></td>
       <td><div style="text-align: center"><i *ngIf="data.isActivated" i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i></div></td>
-      <td>{{data.birthDate}}</td>
-      <td>{{data.PhoneNumber}}</td>
+      <td>{{data.genderName}}</td>
+      <td>{{data.birthDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{data.phoneNumber}}</td>
       <td>
         {{ data.address }}
         <span *ngIf="data.districtName"> {{ ', ' + data.districtName }}</span>
@@ -72,7 +71,7 @@
       <td action nzRight="0px">
         <a (click)="edit(data)">Sửa</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a nz-popconfirm nzTitle="Bạn có chắc muốn xóa mục này?" (nzOnConfirm)="deleteRow(data._id)">Xoá</a>
+        <a nz-popconfirm nzTitle="Bạn có chắc muốn xóa mục này?" nzOkText="Đồng ý"  nzCancelText="Hủy" (nzOnConfirm)="deleteRow(data.id)">Xoá</a>
       </td>
     </tr>
   </tbody>

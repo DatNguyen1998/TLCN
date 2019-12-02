@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,11 +39,28 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var promotion = await _promotionService.FindByIdAsync(model.Id);
+                return Ok(promotion);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody] PromotionViewModel model)
         {
             try
             {
+                model.Id = new Guid();
                 await _promotionService.CreateAsync(model);
                 return Ok();
             }
@@ -52,8 +70,8 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpPut("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Update([FromBody] PromotionViewModel model)
         {
             try
@@ -73,13 +91,13 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpDelete("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
-        public async Task<ActionResult> Delete([FromForm] Guid id)
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try
             {
-                var mode_db = await _promotionService.FindByIdAsync(id);
+                var mode_db = await _promotionService.FindByIdAsync(model.Id);
                 if (mode_db == null)
                 {
                     return BadRequest("Model is not exists");
@@ -92,5 +110,23 @@ namespace TLCN.Web.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("[action]")]
+        //[Authorize(Policy = "RequireAdministrator")]
+        public IActionResult Filter([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var promotions = _promotionService.Find(model);
+                var result = Mapper.Map<IEnumerable<PromotionViewModel>>(promotions);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
+
+
 }

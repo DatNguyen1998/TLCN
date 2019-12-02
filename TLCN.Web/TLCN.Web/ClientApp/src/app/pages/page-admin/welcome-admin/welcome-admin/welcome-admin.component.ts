@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/common/authentication.service';
 
 @Component({
   selector: 'app-welcome-admin',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeAdminComponent implements OnInit {
 
-  constructor() { }
+  userName = '';
+
+  constructor(
+    private auth: AuthenticationService,
+    
+  ) { }
 
   ngOnInit() {
+    this.userName = this.auth.currentUser.name;
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

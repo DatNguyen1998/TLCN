@@ -19,7 +19,6 @@ namespace TLCN.Models
 
         public virtual DbSet<AuthUser> AuthUsers { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
-        public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<DetailBill> DetailBills { get; set; }
@@ -28,6 +27,7 @@ namespace TLCN.Models
         public virtual DbSet<Product> Products{ get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<ReviewProduct> ReviewProducts { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

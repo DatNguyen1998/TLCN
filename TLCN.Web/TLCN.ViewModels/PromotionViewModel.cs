@@ -13,6 +13,12 @@ namespace TLCN.ViewModels
         public int DisCount { get; set; }   // số giảm giá
         public string Description { get; set; } // mô tả
         public Guid? BillId { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public DateTimeOffset Modified { get; set; }
+        [StringLength(255)]
+        public string CreatedBy { get; set; }
+        [StringLength(255)]
+        public string ModifiedBy { get; set; }
 
     }
 }

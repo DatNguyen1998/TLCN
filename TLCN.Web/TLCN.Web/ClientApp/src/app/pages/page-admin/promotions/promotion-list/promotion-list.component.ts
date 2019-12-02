@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { PromotionDetailComponent } from '../promotion-detail/promotion-detail.component';
+import { PromotionService } from 'src/app/services/promotion/promotion.service';
 
 @Component({
   selector: 'app-promotion-list',
@@ -17,15 +18,26 @@ export class PromotionListComponent implements OnInit {
         keyWord: '',
     }
 
+    status = false;
+
+    modelSearch = {
+        name: ''
+    }
+
+    modelDelete = {
+        id: ''
+    }
+
     promotions: any[] = [];
 
     constructor(
         private modalService: NzModalService,
         private msg?: NzMessageService,
+        private promotionSv?: PromotionService
     ) { }
 
     ngOnInit() {
-
+        this.getList();
     }
 
     edit(model: any = null) {
@@ -38,7 +50,7 @@ export class PromotionListComponent implements OnInit {
             nzContent: PromotionDetailComponent,
             nzComponentParams: {
                 params: {
-                    id: model ? model._id : '',
+                    id: model ? model.id : '',
                 }
             },
             nzFooter: [{
@@ -60,12 +72,66 @@ export class PromotionListComponent implements OnInit {
         });
     }
 
-    getList() {
-
+    async getList() {
+        try {
+            this.tableInfo.loading = true;
+            const res: any = await this.promotionSv.getAll();
+            this.promotions = res;
+        }
+        catch(e) {
+            console.log(e);
+        }
+        finally {
+            this.tableInfo.loading = false;
+        }
     }
 
-    deleteRow() {
+    async deleteRow(id: any) {
+        try {
+            this.modelDelete.id = id;
+            var res: any = await this.promotionSv.delete(this.modelDelete);
+            if(res) {
+                this.msg.success('Xóa thành công');
+                this.refresh();
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
 
+    async search() {
+        try {
+            this.tableInfo.loading = true;
+            if(this.tableInfo.keyWord !== '') {
+                this.modelSearch.name = this.tableInfo.keyWord.trim().toLowerCase();
+                this.status = true;
+            }
+            if(this.modelSearch && this.status === true) {
+                const res = await this.promotionSv.filter(this.modelSearch);
+                this.promotions = res;
+            }
+            else {
+                this.getList();
+            }
+        }
+        catch(e) {
+            console.log(e);
+        }
+        finally {
+            this.tableInfo.loading = false;
+            this.modelSearch.name = '';
+            this.status = false;
+        }
+    }
+
+    refresh() {
+        if (this.tableInfo.keyWord === '') {
+            this.getList(); 
+        }
+        else {
+            this.search();
+        }
     }
 
 }
