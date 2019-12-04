@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public IActionResult GetAll()
         {
             try
@@ -40,7 +41,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
         {
             try
@@ -55,7 +56,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public IActionResult Filter([FromBody] SearchViewModel model)
         {
             try
@@ -71,7 +72,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody]MenuViewModel model)
         {
             try
@@ -87,7 +88,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Update([FromBody] MenuViewModel model)
         {
             try
@@ -108,7 +109,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try

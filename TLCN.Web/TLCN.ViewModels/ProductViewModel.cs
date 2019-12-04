@@ -15,7 +15,7 @@ namespace TLCN.ViewModels
         [StringLength(500)]
         public string Description { get; set; } // mô tả sản phẩm
         public bool IsSell { get; set; } //true : đang kinh doanh , false : Ngừng kinh doanh
-        public Guid? Logo { get; set; } // hình ảnh sản phẩm
+        public string LogoId { get; set; } // hình ảnh sản phẩm
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset Modified { get; set; }
         [StringLength(255)]

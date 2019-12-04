@@ -7,6 +7,7 @@ import { MetadataTypeEnum } from 'src/app/enum/MetadataType.enum';
 import { MetadataTypeService } from '../../../../services/metadataType/metadata-type.service';
 import { Role } from 'src/app/enum/role.enum';
 
+
 @Component({
   selector: 'app-auth-user-detail',
   templateUrl: './auth-user-detail.component.html',
@@ -33,7 +34,7 @@ export class AuthUserDetailComponent implements OnInit {
     districtLoading = false;
     districtDisable = true;
     isLoading = false;  // loading chung
-    
+    test = new Date();
 
     constructor(
         private fb: FormBuilder,
@@ -53,7 +54,7 @@ export class AuthUserDetailComponent implements OnInit {
             password: [, [Validators.required]],
             email: [, [Validators.required]],
             confirmPassword: [, [Validators.required]],
-            birthDate: [null, [Validators.required]],
+            birthDate: [new Date(), [Validators.required]],
             genderId: [, [Validators.required]],
             phoneNumber: [, [Validators.required]],
             address: [, [Validators.required]],
@@ -171,13 +172,20 @@ export class AuthUserDetailComponent implements OnInit {
             && this.authUserForm.get(formControlName).errors[errorString];
     }
 
-    checkConfirmPassWordValidator = (control: FormControl): { [s: string]: boolean } => {
-        if (!control.value) {
-            return { required: true };
-        } else if (control.value !== this.authUserForm.controls.password.value) {
-            return { confirm: true, error: true };
+    // checkConfirmPassWordValidator = (control: FormControl): { [s: string]: boolean } => {
+    //     if (!control.value) {
+    //         return { required: true };
+    //     } else if (control.value !== this.authUserForm.controls.password.value) {
+    //         return { confirm: true, error: true };
+    //     }
+    //     return {};
+    // };
+
+    checkConfirmPassWordValidator() {
+        if(this.authUserForm.controls.password.value === this.authUserForm.controls.confirmPassword.value) {
+            return false;
         }
-        return {};
-    };
+        return true;
+    }
 
 }

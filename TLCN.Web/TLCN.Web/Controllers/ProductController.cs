@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TLCN.Common.Dto;
 using TLCN.ViewModels;
 using TLCN.Web.Services;
 
@@ -18,6 +21,7 @@ namespace TLCN.Web.Controllers
     {
         private readonly IProductService _productService;
         private readonly IHostingEnvironment _host;
+        private readonly string url = "../Images/";
         public ProductController(IProductService productService, IHostingEnvironment host)
         {
             _productService = productService;
@@ -25,6 +29,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
+        [Authorize(Policy = "RequireLoggedIn")]
         public IActionResult GetAll()
         {
             try
@@ -40,7 +45,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireLoggedIn")]
         public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
         {
             try
@@ -56,7 +61,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireLoggedIn")]
         public IActionResult Filter([FromBody] SearchViewModel model)
         {
             try
@@ -72,12 +77,13 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody] ProductViewModel model)
         {
             try
             {
                 model.Id = new Guid();
+                model.LogoId = url + model.LogoId;
                 await _productService.CreateAsync(model);
                 return Ok();
             }
@@ -88,7 +94,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Update([FromBody] ProductViewModel model)
         {
             try
@@ -99,6 +105,7 @@ namespace TLCN.Web.Controllers
                     return BadRequest("Model is not exists");
                 }
                 model_db = model;
+                model_db.LogoId = url + model_db.LogoId;
                 await _productService.UpdateAsync(model_db, model_db.Id);
                 return Ok();
             }
@@ -109,7 +116,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try

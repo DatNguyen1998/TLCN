@@ -10,6 +10,7 @@ import { PromotionListComponent } from './pages/page-admin/promotions/promotion-
 import { PagesModule } from './pages/page.module';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuListComponent } from './pages/page-admin/menu/menu-list/menu-list.component';
+import { IndexComponent } from './pages/page-client/index/index.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -22,8 +23,10 @@ const routes: Routes = [
       { path: 'menu', component: MenuListComponent },
       { path: 'product', component: ProductListComponent },
       { path: 'promotion', component: PromotionListComponent },
-      
     ]},
+
+    { path: 'index', component: IndexComponent }
+
 
     
 ];

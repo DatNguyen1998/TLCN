@@ -18,7 +18,7 @@ namespace TLCN.Models
         [StringLength(500)]
         public string Description { get; set; } // mô tả sản phẩm
         public bool IsSell { get; set; } //true : đang kinh doanh , false : Ngừng kinh doanh
-        public Guid? LogoId { get; set; } // hình ảnh sản phẩm
+        public string LogoId { get; set; } // hình ảnh sản phẩm
         public Guid MenuId { get; set; }
         
         public virtual Menu Menu { get; set; }

@@ -12,7 +12,7 @@ export class HttpClient {
 
     createAuthorizationHeader(headers: Headers) {
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', this.auth.currentUser.role);
+        headers.append('Authorization', 'Bearer ' +  this.auth.currentUser.token);
     }
 
     createAuthorizationHeaderForUploading(headers: Headers) {

@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NzModalRef, NzMessageService, UploadFile } from 'ng-zorro-antd';
+import { NzModalRef, NzMessageService, UploadFile, UploadXHRArgs } from 'ng-zorro-antd';
 import { ProductService } from 'src/app/services/product/product.service';
 import { MetadataValueService } from 'src/app/services/metadataValue/metadata-value.service';
 import { MetadataTypeEnum } from 'src/app/enum/MetadataType.enum';
 import { MenuService } from 'src/app/services/menu/menu.service';
+import { FileCommonService } from 'src/app/services/common/file-common.service';
+import { HttpRequest, HttpEventType, HttpEvent, HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-detail',
@@ -20,18 +22,18 @@ export class ProductDetailComponent implements OnInit {
     isLoading = false;
     producers: any[] = [];
     productTypes: any[] = [];
-
+    fileList = [];
     nodes: any[] = [];
     menus: any[] = [];
-
     logos: any = {
         "Logo": {
             filesToUpload: [],
             downloading: false,
             uploading: false,
-            base64Image: ''
+            image: ''
         }
     }
+
 
     modelSearch = {
         name: '',
@@ -46,6 +48,8 @@ export class ProductDetailComponent implements OnInit {
         private productSv?: ProductService,
         private metaValueSv?: MetadataValueService,
         private menuSv?: MenuService,
+        private fileSv?: FileCommonService,
+        private http?: HttpClient
     ) { }
 
     ngOnInit() {
@@ -73,6 +77,14 @@ export class ProductDetailComponent implements OnInit {
             this.modelSearch.id = this.params.id;
             const res = await this.productSv.getById(this.modelSearch);
             this.productForm.patchValue(res);
+            this.fileList = [
+                {
+                  uid: -1,
+                  name: this.productForm.controls.logoId.value,
+                  status: 'done',
+                  url: this.productForm.controls.logoId.value
+                }
+              ];
         }
         catch (e) {
             console.log(e);
@@ -172,50 +184,88 @@ export class ProductDetailComponent implements OnInit {
             && this.productForm.get(formControlName).errors[errorString];
     }
 
-    //upload file
-    beforeUploadLogo = (file: UploadFile): boolean => {
-        return this.beforeUpload(file, 'Logo');
+    //image
+    showUploadList = {
+        showPreviewIcon: true,
+        showRemoveIcon: true,
+        hidePreviewIconInNonImage: true
     };
 
-    beforeUpload(file: UploadFile, type: string) {
-        this.logos[type].filesToUpload = [];
-        this.logos[type].filesToUpload = [...this.logos[type].filesToUpload, file]; // allow 1 file only
-        return false;
+    
+
+    previewImage: string | undefined = '';
+    previewVisible = false;
+
+    handlePreview = (file: UploadFile) => {
+        
+        this.previewImage = file.url || file.thumbUrl;
+        this.previewVisible = true;
+    };
+
+    removeImage = (file: UploadFile) => {
+        this.fileList = [];
     }
 
-    async handleUpload(logoType: string) {
+    //image
+    customReq = (item: UploadXHRArgs) => {
+        this.productForm.controls.logoId.setValue(item.file.name);
+        // Create a FormData here to store files and other parameters.
         const formData = new FormData();
-        this.logos[logoType].filesToUpload.forEach((file: any) => {
-            formData.append('files[]', file);
+        // tslint:disable-next-line:no-any
+        formData.append('file', item.file as any);
+        formData.append('id', '1000');
+        const req = new HttpRequest('POST', this.fileSv.baseUrlUpload, formData, {
+            reportProgress: true,
+            withCredentials: true
         });
+        // Always returns a `Subscription` object. nz-upload would automatically unsubscribe it at correct time.
+        return this.http.request(req).subscribe(
+            (event: HttpEvent<{}>) => {
+                if (event.type === HttpEventType.UploadProgress) {
+                    if (event.total! > 0) {
+                        // tslint:disable-next-line:no-any
+                        (event as any).percent = (event.loaded / event.total!) * 100;
+                    }
+                    item.onProgress!(event, item.file!);
+                } else if (event instanceof HttpResponse) {
+                    item.onSuccess!(event.body, item.file!, event);
+                }
+            },
+            err => {
+                item.onError!(err, item.file!);
+            }
+        );
+    };
 
-        // Upload file
-        this.logos[logoType].uploading = true;
-        //const res = await this.attachmentService.upload(formData);
-        this.logos[logoType].uploading = false;
 
-        //if (res && res.data && res.data.length) {
+    //upload file
+    //beforeUploadLogo = (file: UploadXHRArgs): boolean => {
+    //    return this.beforeUpload(file);
+    //};
 
-        //    this.logos[logoType].filesToUpload = [];
-        //    const uploadedFile = res.data[0];
+    //beforeUpload(File: UploadXHRArgs) {
+    //    this.file = File;
+    //    this.downloadFile = true;
+    //    console.log(this.file);
+    //    return false;
+    //}
 
-        //    if (logoType === 'Logo') {
-        //        this.validateForm.controls.logoId.setValue(uploadedFile.id);
-        //    }
+    //previewImage: string | undefined = '';
+    //downloadFile = false;
 
-        //    // Get base 64 image
-        //    this.logos[logoType].downloading = true;
-        //    const base64image = await this.getBase64Image(uploadedFile.id);
-        //    if (base64image) {
-        //        this.logos[logoType].base64Image = base64image;
-        //    }
-        //    else {
-        //        this.logos[logoType].base64Image = '';
-        //    }
-        //    this.logos[logoType].downloading = false;
+    //handlePreview = (file: UploadXHRArgs) => {
+    //    this.previewImage = this.fileSv.urlImage + file.name;
+        
+    //};
 
-        //}
-    }
+    // async handleUpload() {
+    //    var res = await  this.fileSv.customReq(this.file);
+    //    if (res) {
+    //        this.handlePreview(this.file);
+    //    }
+    //}
+
+    
 
 
 }

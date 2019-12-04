@@ -33,7 +33,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
-        //[Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Policy = "RequireAdministratorRole")]
         public IActionResult GetAll()
         {
             try
@@ -49,7 +49,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireLoggedIn")]
         public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
         {
             try
@@ -65,7 +65,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody] AuthUserViewModel model)
         {
             try
@@ -85,7 +85,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireLoggedIn")]
         public async Task<ActionResult> Update([FromBody] AuthUserViewModel model)
         {
             try
@@ -106,7 +106,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public async Task<ActionResult> Delete([FromBody] DeleteViewModel model)
         {
             try
@@ -172,7 +172,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        //[Authorize(Policy = "RequireAdministrator")]
+        [Authorize(Policy = "RequireAdministrator")]
         public IActionResult Filter([FromBody] SearchViewModel model)
         {
             try

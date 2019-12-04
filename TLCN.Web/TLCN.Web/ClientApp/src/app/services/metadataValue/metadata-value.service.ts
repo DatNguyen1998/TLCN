@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { HttpClient } from '../common/http-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MetadataValueService {
 
-  constructor(private client: Http) { }
+  constructor(private client: Http,
+    private http: HttpClient) { }
 
   async getAll() {
     try {
-        const res: any = await this.client.get(`/api/MetadataValue/GetAll`).toPromise();
+        const res: any = await this.http.get(`/api/MetadataValue/GetAll`).toPromise();
         return res.json();
     }
     catch (e) {
@@ -22,7 +24,7 @@ export class MetadataValueService {
 
     async add(model: any) {
         try {
-            const res: any = await this.client.post(`/api/MetadataValue/Add`, model).toPromise();
+            const res: any = await this.http.post(`/api/MetadataValue/Add`, model).toPromise();
             if (res) {
                 return true;
             }
@@ -35,7 +37,7 @@ export class MetadataValueService {
 
     async update(model: any) {
         try {
-            const res: any = await this.client.post(`/api/MetadataValue/Update`, model).toPromise();
+            const res: any = await this.http.post(`/api/MetadataValue/Update`, model).toPromise();
             if (res) {
                 return true;
             }
@@ -48,7 +50,7 @@ export class MetadataValueService {
 
     async delete(model: any) {
         try {
-            const res: any = await this.client.post(`/api/MetadataValue/Delete`, model).toPromise();
+            const res: any = await this.http.post(`/api/MetadataValue/Delete`, model).toPromise();
             if (res) {
                 return true;
             }
@@ -60,14 +62,14 @@ export class MetadataValueService {
     }
 
     async getById(model: any) {
-        const res: any = await this.client.post(`/api/MetadataValue/GetById`, model).pipe(
+        const res: any = await this.http.post(`/api/MetadataValue/GetById`, model).pipe(
             catchError(this.handleError)
         ).toPromise();
         return res.json();
     }
 
     async filter(model: any) {
-        const res: any = await this.client.post(`/api/MetadataValue/Filter`, model).pipe(
+        const res: any = await this.http.post(`/api/MetadataValue/Filter`, model).pipe(
             catchError(this.handleError)
         ).toPromise();
         return res.json();

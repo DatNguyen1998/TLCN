@@ -38,7 +38,7 @@
       </nz-form-item>
     </div>
     <!--<div nz-col [nzLg]="{span: 2, offset: 0}"></div>-->
-    <div nz-col [nzSpan]="12">
+    <div nz-col [nzSpan]="12" *ngIf="!params.id">
       <nz-form-item>
         <nz-form-label [nzSpan]="8">Password</nz-form-label>
         <nz-form-control [nzLg]="{span: 16, offset: 0}">
@@ -49,10 +49,22 @@
         </nz-form-control>
       </nz-form-item>
     </div>
+    <div nz-col [nzSpan]="12" *ngIf="params.id">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="8">Email</nz-form-label>
+        <nz-form-control [nzLg]="{span: 16, offset: 0}">
+          <input type="email" nz-input formControlName="email" />
+          <nz-form-explain *ngIf="showExplain('email', 'required')">
+            Vui lòng điền Email
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
   </div>
   <br />
   <div nz-row nzType="flex" nzJustify="start">
-    <div nz-col [nzSpan]="12">
+    <div nz-col [nzSpan]="12" *ngIf="!params.id">
       <nz-form-item>
         <nz-form-label [nzSpan]="8">Nhập lại Password</nz-form-label>
         <nz-form-control [nzLg]="{span: 16, offset: 0}">
@@ -60,14 +72,14 @@
           <nz-form-explain *ngIf="showExplain('confirmPassword', 'required')">
             Vui lòng điền Password
           </nz-form-explain>
-          <!--<nz-form-explain *ngIf="checkConfirmPassWordValidator('confirmPassword', 'required')">
+          <nz-form-explain style="color: red;" *ngIf="checkConfirmPassWordValidator()">
           Mật khẩu không giống
-        </nz-form-explain>-->
+        </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
     </div>
     <!--<div nz-col [nzLg]="{span: 2, offset: 0}"></div>-->
-    <div nz-col [nzSpan]="12">
+    <div nz-col [nzSpan]="12" *ngIf="!params.id">
       <nz-form-item>
         <nz-form-label [nzSpan]="8">Email</nz-form-label>
         <nz-form-control [nzLg]="{span: 16, offset: 0}">
@@ -85,8 +97,8 @@
       <nz-form-item>
         <nz-form-label nzFor="birthDate" [nzSpan]="8">Ngày sinh</nz-form-label>
         <nz-form-control [nzLg]="{span: 16, offset: 0}">
-          <nz-date-picker [nzSize]="size" formControlName="birthDate"></nz-date-picker>
-          <!--<nz-date-picker formControlName="birthDate" nzFormat="dd/MM/yyyy"></nz-date-picker>-->
+          <!-- <nz-date-picker [nzSize]="size" formControlName="birthDate"></nz-date-picker> -->
+          <nz-date-picker formControlName="birthDate" nzFormat="dd/MM/yyyy"></nz-date-picker>
           <nz-form-explain *ngIf="showExplain('birthDate', 'required')">
             Vui lòng chọn ngày sinh
           </nz-form-explain>
@@ -176,4 +188,5 @@
     </div>
   </div>
 </form>
+
 

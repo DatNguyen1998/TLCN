@@ -55,6 +55,11 @@ export class AuthenticationService {
     }
 
     isLogin() {
+        const result: any = JSON.parse(StorageHelper.getStorageValue(this.key));
+        if (result) {
+            this.currentUser = result;
+            this.currentUser.token = result.token;
+        }
         if (this.currentUser.token) {
             return true
         }
@@ -96,6 +101,7 @@ export class AuthenticationService {
         StorageHelper.removeStorageValue('currentUser');
 
         this.router.navigate(['/login']);
+        this.reloadPage(true);
     }
 
     reloadPage(refreshCache = false) {

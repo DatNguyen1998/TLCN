@@ -82,36 +82,63 @@
       </nz-form-item>
     </div>
   </div>
-
   <div nz-row nzType="flex" nzJustify="start" nzAlign="middle">
-    <div nz-col [nzLg]="{span: 4, offset: 1}">
-      <nz-form-control>
-        <div class="p10 center" *ngIf="logos['Logo'].base64Image">
-          <img class="full-width" [src]="logos['Logo'].base64Image" />
-        </div>
-        <div class="p10 center" *ngIf="!logos['Logo'].base64Image">
-          <img class="full-width" src="assets/images/image-empty.png" />
-        </div>
-      </nz-form-control>
-    </div>
-    <div nz-col [nzLg]="{span: 3, offset: 1}">
-      <nz-form-control>
-        <nz-upload [(nzFileList)]="logos['Logo'].filesToUpload" [nzBeforeUpload]="beforeUploadLogo">
-          <button nz-button><i nz-icon nzType="upload"></i><span>Chọn file</span></button>
+    <div nz-col [nzLg]="{span: 4, offset: 4}">
+      <div class="clearfix">
+        <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/"
+                   nzListType="picture-card"
+                   [(nzFileList)]="fileList"
+                   [nzShowButton]="fileList.length < 1"
+                   [nzShowUploadList]="showUploadList"
+                   [nzPreview]="handlePreview"
+                   [nzCustomRequest]="customReq"
+                   [nzRemove]="removeImage">
+          <i nz-icon nzType="plus"></i>
+          <div class="ant-upload-text">Upload</div>
         </nz-upload>
-        <button nz-button [nzType]="'primary'" [nzLoading]="logos['Logo'].uploading" (click)="handleUpload('Logo')"
-                [disabled]="logos['Logo'].filesToUpload.length == 0" style="margin-top: 16px">
-          {{ logos['Logo'].uploading ? 'Đang upload' : 'Tải lên' }}
-        </button>
-      </nz-form-control>
-    </div>
-    <div nz-col [nzLg]="{span: 5, offset: 5}">
-      <nz-form-item>
-        <nz-form-control [nzLg]="{span: 16, offset: 8}">
-          <label formControlName="isSell" nz-checkbox>Kinh doanh</label>
-        </nz-form-control>
-      </nz-form-item>
+        <nz-modal [nzVisible]="previewVisible"
+                  [nzContent]="modalContent"
+                  [nzFooter]="null"
+                  (nzOnCancel)="previewVisible = false">
+          <ng-template #modalContent>
+            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+          </ng-template>
+        </nz-modal>
+      </div>
     </div>
   </div>
+    
+
+
+    <!--<div nz-row nzType="flex" nzJustify="start" nzAlign="middle">
+      <div nz-col [nzLg]="{span: 4, offset: 1}">
+        <nz-form-control>
+          <div class="p10 center" *ngIf="previewImage">
+            <img class="full-width" [src]="previewImage" />
+          </div>
+          <div class="p10 center" *ngIf="!previewImage">
+            <img class="full-width" src="assets/images/image-empty.png" />
+          </div>
+        </nz-form-control>
+      </div>
+      <div nz-col [nzLg]="{span: 3, offset: 1}">
+        <nz-form-control>
+          <nz-upload  [nzBeforeUpload]="beforeUploadLogo">
+            <button nz-button><i nz-icon nzType="upload"></i><span>Chọn file</span></button>
+          </nz-upload>
+          <button nz-button [nzType]="'primary'"  (click)="handleUpload()"
+                  [disabled]="!downloadFile" style="margin-top: 16px">
+            {{ logos['Logo'].uploading ? 'Đang upload' : 'Tải lên' }}
+          </button>
+        </nz-form-control>
+      </div>
+      <div nz-col [nzLg]="{span: 5, offset: 5}">
+        <nz-form-item>
+          <nz-form-control [nzLg]="{span: 16, offset: 8}">
+            <label formControlName="isSell" nz-checkbox>Kinh doanh</label>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>-->
 
 </form>

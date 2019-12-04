@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from '../services/helper/Jwt.Interceptor';
 import { MenuListComponent } from './page-admin/menu/menu-list/menu-list.component';
 import { MenuDetailComponent } from './page-admin/menu/menu-detail/menu-detail.component';
+import { IndexComponent } from './page-client/index/index.component';
 
 
 
@@ -50,7 +51,8 @@ import { MenuDetailComponent } from './page-admin/menu/menu-detail/menu-detail.c
     PromotionDetailComponent,
     LoginComponent,
     MenuListComponent,
-    MenuDetailComponent
+    MenuDetailComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { MenuDetailComponent } from './page-admin/menu/menu-detail/menu-detail.c
     BrowserAnimationsModule,
     RouterModule,
       ReactiveFormsModule,
+      
   ],
   entryComponents: [
     AuthUserDetailComponent,
@@ -71,5 +74,9 @@ import { MenuDetailComponent } from './page-admin/menu/menu-detail/menu-detail.c
     ProductDetailComponent,
     PromotionDetailComponent,
   ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: NZ_I18N, useValue: en_US }
+  ]
 })
 export class PagesModule { }
