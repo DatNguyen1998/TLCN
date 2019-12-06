@@ -11,6 +11,7 @@ namespace TLCN.Web.Services
     public interface IProductService : IBaseService<Product, ProductViewModel>
     {
         IEnumerable<Product> Find(SearchViewModel model, string includes = "");
+        IEnumerable<Product> GetProductForClient(Guid menuId, string includes = "");
     }
     public class ProductService: BaseService<Product, ProductViewModel>, IProductService
     {
@@ -25,7 +26,7 @@ namespace TLCN.Web.Services
             IEnumerable<Product> result = null;
             if (model.Name != "" && model.ProducerId == null)
             {
-                result = this.FindToEntity(x => x.Name == model.Name, includes: includes);
+                result = this.FindToEntity(x => x.Name.Contains(model.Name), includes: includes);
             }
             if (model.Name == "" && model.ProducerId != null)
             {
@@ -33,13 +34,20 @@ namespace TLCN.Web.Services
             }
             if (model.Name != "" && model.ProducerId != null)
             {
-                result = this.FindToEntity(x => x.ProducerId == model.ProducerId && x.Name == model.Name, includes: includes);
+                result = this.FindToEntity(x => x.ProducerId == model.ProducerId && x.Name.Contains(model.Name), includes: includes);
             }
             if (model.MenuId != null)
             {
                 result = this.FindToEntity(x => x.MenuId == model.MenuId, includes: includes);
             }
             return result;
+        }
+
+        public IEnumerable<Product> GetProductForClient(Guid menuId, string includes = "")
+        {
+            IEnumerable<Product> products = null;
+            products = this.FindToEntity(x => x.MenuId == menuId);
+            return products;
         }
     }
 }

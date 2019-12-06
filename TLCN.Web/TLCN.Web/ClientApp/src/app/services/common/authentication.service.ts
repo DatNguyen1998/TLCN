@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { NzNotificationService } from 'ng-zorro-antd';
 import * as _ from 'lodash';
 import { Observable, observable, Subscriber, BehaviorSubject } from 'rxjs';
+import { BillDetailService } from '../bill/bill-detail.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ import { Observable, observable, Subscriber, BehaviorSubject } from 'rxjs';
 export class AuthenticationService {
     public token: string;
     public key = 'currentUser';
+    public IdUser = '';
     public currentUser: any = { name: '', role: '', userId: '', username: '' };
+    public countCart = 0;
     callBack = () => { };
 
     callBackResolveAuthGuard: any = () => { };
@@ -107,5 +110,6 @@ export class AuthenticationService {
     reloadPage(refreshCache = false) {
         location.reload(refreshCache);
     }
-  
+    
+
 }

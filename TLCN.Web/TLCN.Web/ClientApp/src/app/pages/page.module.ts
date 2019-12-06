@@ -28,6 +28,8 @@ import { JwtInterceptor } from '../services/helper/Jwt.Interceptor';
 import { MenuListComponent } from './page-admin/menu/menu-list/menu-list.component';
 import { MenuDetailComponent } from './page-admin/menu/menu-detail/menu-detail.component';
 import { IndexComponent } from './page-client/index/index.component';
+import { PhoneComponent } from './page-client/phone/phone.component';
+import { CartComponent } from './page-client/cart/cart.component';
 
 
 
@@ -52,7 +54,9 @@ import { IndexComponent } from './page-client/index/index.component';
     LoginComponent,
     MenuListComponent,
     MenuDetailComponent,
-    IndexComponent
+    IndexComponent,
+    PhoneComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

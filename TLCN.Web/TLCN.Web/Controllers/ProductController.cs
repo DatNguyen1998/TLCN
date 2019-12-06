@@ -20,12 +20,14 @@ namespace TLCN.Web.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IMenuService _menuService;
         private readonly IHostingEnvironment _host;
         private readonly string url = "../Images/";
-        public ProductController(IProductService productService, IHostingEnvironment host)
+        public ProductController(IProductService productService, IHostingEnvironment host, IMenuService menuService)
         {
             _productService = productService;
             _host = host;
+            _menuService = menuService;
         }
 
         [HttpGet("[action]")]
@@ -66,8 +68,8 @@ namespace TLCN.Web.Controllers
         {
             try
             {
-                var metadataValues = _productService.Find(model, "Menu,Producer");
-                var result = Mapper.Map<IEnumerable<ProductGridViewModel>>(metadataValues);
+                var products = _productService.Find(model, "Menu,Producer");
+                var result = Mapper.Map<IEnumerable<ProductGridViewModel>>(products);
                 return Ok(result);
             }
             catch (Exception e)
@@ -134,5 +136,24 @@ namespace TLCN.Web.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        //Client 
+        //
+        [HttpPost("[action]")]
+        public IActionResult GetProductForClient([FromBody] ProductMenuIdViewModel model)
+        {
+            try
+            {
+                var menu = _menuService.FindToEntity(x => x.Code == model.MenuCode).FirstOrDefault();
+                var products = _productService.GetProductForClient(menu.Id, "Menu,Producer");
+                var result = Mapper.Map<IEnumerable<ProductGridViewModel>>(products);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

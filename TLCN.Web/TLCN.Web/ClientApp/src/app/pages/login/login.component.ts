@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/admin']);
             }
             if (this.auth.currentUser.role === Role.Member) {
-                // chuyen sang trang user
+                this.router.navigate(['/index']);
             }
         }
         else {
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/admin']);
                 }
                 if (this.auth.currentUser.role === Role.Member) {
-                    // chuyen sang trang user
+                    this.router.navigate(['/index']);
                 }
             }
             else {

@@ -15,7 +15,7 @@ namespace TLCN.ViewModels
         public double Price { get; set; }  // giá 
         public string Description { get; set; } // mô tả sản phẩm
         public bool IsSell { get; set; } //true : đang kinh doanh , false : Ngừng kinh doanh
-        public Guid? Logo { get; set; } // hình ảnh sản phẩm
+        public string LogoId { get; set; } // hình ảnh sản phẩm
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset Modified { get; set; }
         public string CreatedBy { get; set; }

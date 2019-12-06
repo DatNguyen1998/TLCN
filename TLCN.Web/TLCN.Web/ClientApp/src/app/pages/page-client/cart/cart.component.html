@@ -1,0 +1,30 @@
+<h2>Giỏ hàng</h2>
+<br/>
+
+<div class="table"> 
+    <nz-table 
+    #rowSelectionTable
+    nzShowPagination
+    nzShowSizeChanger
+    [nzData]="carts"
+    >
+    <thead>
+      <tr>
+        <th th-default>Tên sản phẩm</th>
+        <th th-default>số lượng</th>
+        <th th-default>Giá</th>
+        <th action nzRight="0px">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td>{{data.productName}}</td>
+        <td>{{ data.amount }}</td>
+        <td>{{ data.priceTotal | currency: 'VND'}}</td>
+        <td action nzRight="0px">
+          <a nz-popconfirm nzTitle="Bạn có chắc muốn xóa mục này?" nzOkText="Đồng ý"  nzCancelText="Hủy" (nzOnConfirm)="deleteRow(data.id)">Xoá</a>
+        </td>
+      </tr>
+    </tbody>
+    </nz-table>
+  </div>

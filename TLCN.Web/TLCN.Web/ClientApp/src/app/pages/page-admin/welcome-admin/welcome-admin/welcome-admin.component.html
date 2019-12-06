@@ -60,7 +60,7 @@
                          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
                       ></i>
                       <a style="float:right; padding-right: 50px;" nz-dropdown [nzDropdownMenu]="menu">
-                        <nz-avatar nzIcon="user"></nz-avatar>
+                        <nz-avatar nzIcon="user"></nz-avatar><span style="color: black;"> Welcome {{userName}}</span>
                       </a>
                       <nz-dropdown-menu #menu="nzDropdownMenu" style="width: 100px;">
                         <ul nz-menu nzSelectable>

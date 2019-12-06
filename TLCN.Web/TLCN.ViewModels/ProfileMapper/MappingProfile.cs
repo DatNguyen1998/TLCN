@@ -27,6 +27,8 @@ namespace TLCN.ViewModels.ProfileMapper
             CreateMap<AuthUser, AuthUserGetGridViewModel>().ReverseMap();
             CreateMap<Menu, MenuViewModel>().ReverseMap();
             CreateMap<Menu, MenuGridViewModel>().ReverseMap();
+            CreateMap<DetailBill, BillDetailForClientViewModel>().ReverseMap();
+            CreateMap<DetailBill, BillDetailViewModel>().ReverseMap();
         }
 
     }

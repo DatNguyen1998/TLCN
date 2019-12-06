@@ -53,7 +53,7 @@ export class AuthUserDetailComponent implements OnInit {
             username: [, [Validators.required]],
             password: [, [Validators.required]],
             email: [, [Validators.required]],
-            confirmPassword: [, [Validators.required]],
+            confirmPassword: [],
             birthDate: [new Date(), [Validators.required]],
             genderId: [, [Validators.required]],
             phoneNumber: [, [Validators.required]],

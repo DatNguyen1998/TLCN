@@ -75,6 +75,13 @@ export class ProductService {
     ).toPromise();
     return res.json();
   }
+
+  async getProductForClient(model: any) {
+    const res: any = await this.http.post(`/api/Product/GetProductForClient`, model).pipe(
+        catchError(this.handleError)
+    ).toPromise();
+    return res.json();
+  }
   
   handleError(error) {
     return throwError(error.json());

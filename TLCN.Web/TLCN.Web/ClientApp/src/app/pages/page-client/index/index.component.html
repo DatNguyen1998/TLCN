@@ -1,1 +1,49 @@
-<p>index works!</p>
+<nz-layout>
+    <nz-header>
+      <div class="logo"></div>
+      <div >
+        <div nz-col nzSpan="6" nzOffset="6"><input #box type="text" nz-input placeholder="Tìm theo tên điện thoại, máy tính"  /></div>
+        <div nz-col nzSpan="2" nzOffset="0">
+          <button nz-button nzType="primary" (click)="search()">
+            <i class="anticon" nz-icon nzType="search"></i>
+          </button>
+        </div>
+        <div nz-col nzSpan="1" nzOffset="2" style="margin-top: 10px;">
+          <nz-badge  [(nzCount)]="authenSv.countCart">
+            <a routerLink="/index/cart">
+              <i nz-icon nzType="shopping-cart" style="font-size: 30px;" nzTheme="outline"></i>
+            </a>
+           </nz-badge>
+        </div>
+        <a style="float:right; padding-right: 50px;" nz-dropdown [nzDropdownMenu]="menu">
+            <nz-avatar nzIcon="user"></nz-avatar><span style="color: white;"> Welcome {{userName}}</span>
+          </a>
+          <nz-dropdown-menu #menu="nzDropdownMenu" style="width: 100px;">
+            <ul nz-menu nzSelectable>
+              <li nz-menu-item (click)="logout()">Logout</li>
+            </ul>
+          </nz-dropdown-menu>
+      </div>
+    </nz-header>
+    <nz-layout>
+      <nz-sider nzWidth="200px" nzTheme="light" >
+        <ul nz-menu nzMode="inline" class="sider-menu" >
+          <div *ngFor="let item of nodes">
+              <li nz-submenu nzOpen nzIcon="laptop" [nzTitle]="item.title">
+                  <ul>
+                      <li nz-menu-item *ngFor="let data of item.children">
+                          <a routerLink="/index/{{item.code}}/{{data.code}}">
+                            <i nz-icon nzType="laptop" nzTheme="outline"></i>
+                              <span>{{data.title}}</span>
+                          </a>
+                      </li>
+                  </ul>
+                </li>
+          </div>
+        </ul>
+      </nz-sider>
+      <nz-layout class="inner-layout">
+        <router-outlet></router-outlet>
+      </nz-layout>
+    </nz-layout>
+  </nz-layout>

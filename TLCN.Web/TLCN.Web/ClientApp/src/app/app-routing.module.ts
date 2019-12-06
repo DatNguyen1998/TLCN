@@ -11,11 +11,13 @@ import { PagesModule } from './pages/page.module';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuListComponent } from './pages/page-admin/menu/menu-list/menu-list.component';
 import { IndexComponent } from './pages/page-client/index/index.component';
+import { PhoneComponent } from './pages/page-client/phone/phone.component';
+import { CartComponent } from './pages/page-client/cart/cart.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/login' },
     { path: 'login', component: LoginComponent },
-
+    //admin
     { path: 'admin', component: WelcomeAdminComponent , children: [
       { path: 'authUser', component: AuthUserListComponent },
       { path: 'medataType', component: MetadataTypeListComponent },
@@ -24,8 +26,13 @@ const routes: Routes = [
       { path: 'product', component: ProductListComponent },
       { path: 'promotion', component: PromotionListComponent },
     ]},
+    //client
+    { path: 'index', component: IndexComponent, children: [
+      { path: ':menuCode/:productCode', component: PhoneComponent },
+      { path: 'cart', component: CartComponent },
+    ]},
 
-    { path: 'index', component: IndexComponent }
+    
 
 
     

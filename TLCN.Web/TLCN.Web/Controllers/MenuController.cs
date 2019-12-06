@@ -25,7 +25,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireLoggedIn")]
         public IActionResult GetAll()
         {
             try
