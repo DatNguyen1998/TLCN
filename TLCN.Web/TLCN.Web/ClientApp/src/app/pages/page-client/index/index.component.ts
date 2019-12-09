@@ -3,6 +3,8 @@ import { AuthenticationService } from 'src/app/services/common/authentication.se
 import { Router } from '@angular/router';
 import { MenuService } from 'src/app/services/menu/menu.service';
 import { BillDetailService } from 'src/app/services/bill/bill-detail.service';
+import { FastBackwardFill } from '@ant-design/icons-angular/icons/public_api';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-index',
@@ -16,12 +18,24 @@ export class IndexComponent implements OnInit {
   
   nodes: any[] = [];
   menus: any[] = [];
+  products: any[] = [];
+
+  selectProduct = '';
+
+  modelFilter_billdetail = {
+    authUserId: '',
+  }
+
+  modelSearch_product = {
+    name: '',
+  }
 
   constructor(
     private authenSv: AuthenticationService,
     private router?: Router,
     private menuSv?: MenuService,
     private billDetailSv?: BillDetailService,
+    private productSv?: ProductService,
   ) { }
 
   ngOnInit() {
@@ -31,6 +45,7 @@ export class IndexComponent implements OnInit {
     // }
     this.userName = this.authenSv.currentUser.name;
     this.getDataForTree();
+    this.getCart();
   }
 
   async getDataForTree() {
@@ -39,7 +54,7 @@ export class IndexComponent implements OnInit {
       const res: any = await this.menuSv.getAll();
       this.menus = res;
       this.createTree();
-      this.getCart();
+      
     }
     catch(e) {
         console.log(e);
@@ -73,7 +88,8 @@ export class IndexComponent implements OnInit {
   async getCart() {
     try {
       if(this.authenSv.currentUser.name) {
-        const res: any = await this.billDetailSv.getAll();
+        this.modelFilter_billdetail.authUserId = this.authenSv.currentUser.userId
+        const res: any = await this.billDetailSv.filter(this.modelFilter_billdetail);
         this.authenSv.countCart = res.length;
       }
       else {
@@ -83,6 +99,28 @@ export class IndexComponent implements OnInit {
     catch(e) {
       console.log(e);
     }
+  }
+
+  test = true;
+  search() {
+    if(this.productSv.disableProduct === true) {
+      this.productSv.disableProduct = false;
+      this.getProduct();
+    }
+    else {
+      this.productSv.disableProduct = true;
+    }
+  }
+
+  async getProduct() {
+    try {
+      this.modelSearch_product.name = this.selectProduct;
+      const res = await this.productSv.filter(this.modelSearch_product);
+      this.products = res;
+    }
+    catch(e) {
+      console.log(e);
+    } 
   }
 
 }

@@ -9,6 +9,8 @@ import { HttpClient } from '../common/http-client';
 })
 export class ProductService {
 
+  public disableProduct = true;
+
   constructor(private client: Http,
     private http: HttpClient
     ) { }

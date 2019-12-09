@@ -95,5 +95,20 @@ namespace TLCN.Web.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("[action]")]
+        public IActionResult Filter([FromBody] SearchViewModel model)
+        {
+            try
+            {
+                var detailBills = _billService.Find(model, "AuthUser,Promotions");
+                var result = Mapper.Map<IEnumerable<BillForGridViewModel>>(detailBills);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

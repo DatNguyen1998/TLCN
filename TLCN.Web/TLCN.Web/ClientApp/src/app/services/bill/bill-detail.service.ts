@@ -93,6 +93,13 @@ export class BillDetailService {
     return res.json();
   }
 
+  async filterBill(model: any) {
+    const res: any = await this.http.post(`/api/Bill/Filter`, model).pipe(
+        catchError(this.handleError)
+    ).toPromise();
+    return res.json();
+  }
+
 
   handleError(error) {
     return throwError(error.json());

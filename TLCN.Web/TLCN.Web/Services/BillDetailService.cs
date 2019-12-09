@@ -29,6 +29,10 @@ namespace TLCN.Web.Services
             {
                 result = this.FindToEntity(x => x.BillId == model.BillId, includes: includes);
             }
+            if(model.AuthUserId != null)
+            {
+                result = this.FindToEntity(x => x.AuthUserId == model.AuthUserId && x.IsActivated == false, includes: includes);
+            }
             return result;
         }
 

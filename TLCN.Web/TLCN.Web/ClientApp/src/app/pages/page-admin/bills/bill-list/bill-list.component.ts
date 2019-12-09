@@ -22,6 +22,10 @@ export class BillListComponent implements OnInit {
     keyWord: '',
   }
 
+  model_bill = {
+    StatusBill: ''
+  }
+
   pending = '';
   approved = '';
 
@@ -91,5 +95,25 @@ export class BillListComponent implements OnInit {
         this.refresh();
     });
   }
+
+  async search() {
+    try {
+      this.model_bill.StatusBill = this.selectedStatus;
+      if(this.selectedStatus !== '') {
+        const res = await this.billSv.filterBill(this.model_bill);
+        this.bills = res;
+      }
+      else {
+        this.getList();
+      }
+    }
+    catch(e) {
+      console.log(e);
+    }
+    finally {
+      this.model_bill.StatusBill = '';
+    }
+  }
+
 
 }

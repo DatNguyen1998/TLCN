@@ -65,7 +65,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> Add([FromBody] AuthUserViewModel model)
         {
             try

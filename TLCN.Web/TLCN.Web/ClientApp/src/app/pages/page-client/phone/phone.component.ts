@@ -21,6 +21,10 @@ export class PhoneComponent implements OnInit {
     menuCode: '',
   }
 
+  modelFilter_billdetail = {
+    authUserId: '',
+  }
+
   cartForm: FormGroup;
 
 
@@ -36,6 +40,7 @@ export class PhoneComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.menuCode = params.get('productCode');
+      this.productSv.disableProduct = true;
       this.getProduct();
       this.initForm();
       this.getCart();
@@ -63,13 +68,17 @@ export class PhoneComponent implements OnInit {
     }
   }
 
-  addCart(productId: any) {
+  async addCart(productId: any) {
     try {
       if(this.authenSv.currentUser.userId) {
         this.cartForm.controls.ProductId.setValue(productId);
         this.cartForm.controls.AuthUserId.setValue(this.authenSv.currentUser.userId);
-        const res = this.billDetailSv.add(this.cartForm.value);
-        this.msg.info("Vui lòng kiểm tra giỏ hàng");
+        const res = await this.billDetailSv.add(this.cartForm.value);
+        if(res) {
+          this.getCart();
+          this.msg.info("Vui lòng kiểm tra giỏ hàng");
+        }
+        
       }
       else {
         this.msg.info("Vui lòng đăng nhập để mua hàng");
@@ -86,7 +95,8 @@ export class PhoneComponent implements OnInit {
   async getCart() {
     try {
       if(this.authenSv.currentUser.userId) {
-        const res: any = await this.billDetailSv.getAll();
+        this.modelFilter_billdetail.authUserId = this.authenSv.currentUser.userId
+        const res: any = await this.billDetailSv.filter(this.modelFilter_billdetail);
         this.authenSv.countCart = res.length;
       }
       else {

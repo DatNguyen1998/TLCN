@@ -10,7 +10,7 @@ namespace TLCN.Web.Services
 {
     public interface IBillService: IBaseService<Bill, BillViewModel>
     {
-
+        IEnumerable<Bill> Find(SearchViewModel model, string includes = "");
     }
     public class BillService: BaseService<Bill, BillViewModel>, IBillService
     {
@@ -19,5 +19,15 @@ namespace TLCN.Web.Services
 
         }
         protected override IRepository<Bill> _repository => _uow.BillRepository;
+
+        public IEnumerable<Bill> Find(SearchViewModel model, string includes = "")
+        {
+            IEnumerable<Bill> result = null;
+            if (model.StatusBill != "")
+            {
+                result = this.FindToEntity(x => x.Status == model.StatusBill, includes: includes);
+            }
+            return result;
+        }
     }
 }

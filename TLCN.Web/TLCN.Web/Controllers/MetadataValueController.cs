@@ -25,7 +25,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpGet("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public IActionResult GetAll()
         {
             try
@@ -41,7 +41,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public async Task<IActionResult> GetById([FromBody] SearchViewModel model)
         {
             try
@@ -56,7 +56,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireAdministrator")]
         public IActionResult Filter([FromBody] SearchViewModel model)
         {
             try

@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MetadataValueService } from 'src/app/services/metadataValue/metadata-value.service';
 import { AuthUserService } from 'src/app/services/authUser/auth-user.service';
 import { MetadataTypeEnum } from 'src/app/enum/MetadataType.enum';
+import { Role } from 'src/app/enum/role.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +32,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private metaValueSv?: MetadataValueService,
-    private authSv?: AuthUserService
+    private authSv?: AuthUserService,
+    private router?: Router,
   ) { }
 
   ngOnInit() {
@@ -43,15 +46,21 @@ export class RegisterComponent implements OnInit {
       birthDate: [new Date(), [Validators.required]],
       genderId: [, [Validators.required]],
       phoneNumber: [, [Validators.required]],
+      role: [Role.Member],
       address: [, [Validators.required]],
       districtId: [, [Validators.required]],
       provinceId: [, [Validators.required]],
       isActivated: [true],
     });
+
+    this.getData();
   }
 
-  submitForm() {
-    
+  async submitForm() {
+    const res = await this.authSv.add(this.registerForm.value);
+    if (res) {
+      this.router.navigate(['/login']);
+    }
   }
 
   async getData() {
