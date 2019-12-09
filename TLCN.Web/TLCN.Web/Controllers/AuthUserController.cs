@@ -150,7 +150,7 @@ namespace TLCN.Web.Controllers
                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                             new Claim("User_id", Convert.ToString(user.Id)),
                             new Claim("Username", user.Username),
-                            new Claim("role", user.Role),
+                            new Claim(ClaimTypes.Role, user.Role),
                             new Claim("LoggedOn", DateTime.Now.ToString()),
 
                         }),
@@ -172,7 +172,7 @@ namespace TLCN.Web.Controllers
         }
 
         [HttpPost("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
+        //[Authorize(Policy = "RequireLoggedIn")]
         public IActionResult Filter([FromBody] SearchViewModel model)
         {
             try

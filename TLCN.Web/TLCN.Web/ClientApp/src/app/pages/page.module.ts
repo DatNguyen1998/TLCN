@@ -30,6 +30,8 @@ import { MenuDetailComponent } from './page-admin/menu/menu-detail/menu-detail.c
 import { IndexComponent } from './page-client/index/index.component';
 import { PhoneComponent } from './page-client/phone/phone.component';
 import { CartComponent } from './page-client/cart/cart.component';
+import { PayComponent } from './page-client/pay/pay.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -56,7 +58,10 @@ import { CartComponent } from './page-client/cart/cart.component';
     MenuDetailComponent,
     IndexComponent,
     PhoneComponent,
-    CartComponent
+    CartComponent,
+    PayComponent,
+    BillListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

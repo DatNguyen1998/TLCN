@@ -5,6 +5,7 @@ import { BillDetailService } from 'src/app/services/bill/bill-detail.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { TouchSequence } from 'selenium-webdriver';
 import { AuthenticationService } from 'src/app/services/common/authentication.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-phone',
@@ -28,7 +29,8 @@ export class PhoneComponent implements OnInit {
     private productSv?: ProductService,
     private billDetailSv?: BillDetailService,
     private fb?: FormBuilder,
-    private authenSv?: AuthenticationService
+    private authenSv?: AuthenticationService,
+    private msg?: NzMessageService,
   ) { }
 
   ngOnInit() {
@@ -63,9 +65,15 @@ export class PhoneComponent implements OnInit {
 
   addCart(productId: any) {
     try {
-      this.cartForm.controls.ProductId.setValue(productId);
-      this.cartForm.controls.AuthUserId.setValue(this.authenSv.currentUser.userId);
-      const res = this.billDetailSv.add(this.cartForm.value);
+      if(this.authenSv.currentUser.userId) {
+        this.cartForm.controls.ProductId.setValue(productId);
+        this.cartForm.controls.AuthUserId.setValue(this.authenSv.currentUser.userId);
+        const res = this.billDetailSv.add(this.cartForm.value);
+        this.msg.info("Vui lòng kiểm tra giỏ hàng");
+      }
+      else {
+        this.msg.info("Vui lòng đăng nhập để mua hàng");
+      }
     }
     catch(e) {
       console.log(e);
@@ -77,8 +85,13 @@ export class PhoneComponent implements OnInit {
 
   async getCart() {
     try {
-      const res: any = await this.billDetailSv.getAll();
-      this.authenSv.countCart = res.length;
+      if(this.authenSv.currentUser.userId) {
+        const res: any = await this.billDetailSv.getAll();
+        this.authenSv.countCart = res.length;
+      }
+      else {
+        this.authenSv.countCart = 0;
+      }
     }
     catch(e) {
       console.log(e);

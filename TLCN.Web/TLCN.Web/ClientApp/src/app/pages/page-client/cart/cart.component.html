@@ -1,7 +1,7 @@
 <h2>Giỏ hàng</h2>
 <br/>
-
-<div class="table"> 
+<div *ngIf="authenSv.currentUser.userId">
+  <div class="table" style="width: auto; background-color: white;" > 
     <nz-table 
     #rowSelectionTable
     nzShowPagination
@@ -28,3 +28,18 @@
     </tbody>
     </nz-table>
   </div>
+
+  <br/>
+
+  <button style="float: right;" nzSize="large" nz-button nzType="primary" (click)="pay()" *ngIf="carts.length != 0">
+    <span>Tiến Hành Đặt Hàng</span>
+  </button>
+</div>
+
+<div *ngIf="!authenSv.currentUser.userId">
+    <nz-result nzStatus="warning" nzTitle="Vui Lòng Đăng Nhập">
+        <div nz-result-extra>
+          <button nz-button nzType="primary" (click)="returnLogin()">Login</button>
+        </div>
+      </nz-result>
+</div>

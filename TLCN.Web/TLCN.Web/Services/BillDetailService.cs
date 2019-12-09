@@ -11,6 +11,7 @@ namespace TLCN.Web.Services
     public interface IBillDetailService : IBaseService<DetailBill, BillDetailViewModel> 
     {
         IEnumerable<DetailBill> GetCartForAuthUser(Guid authUserId, string includes = "");
+        IEnumerable<DetailBill> Find(SearchViewModel model, string includes = "");
     }
     public class BillDetailService: BaseService<DetailBill, BillDetailViewModel>, IBillDetailService
     {
@@ -21,10 +22,20 @@ namespace TLCN.Web.Services
 
         protected override IRepository<DetailBill> _repository => _uow.DetailBillRepository;
 
+        public IEnumerable<DetailBill> Find(SearchViewModel model, string includes = "")
+        {
+            IEnumerable<DetailBill> result = null;
+            if(model.BillId != null)
+            {
+                result = this.FindToEntity(x => x.BillId == model.BillId, includes: includes);
+            }
+            return result;
+        }
+
         public IEnumerable<DetailBill> GetCartForAuthUser(Guid authUserId, string includes = "")
         {
             IEnumerable<DetailBill> result = null;
-            result = this.FindToEntity(x => x.AuthUserId == authUserId, includes: includes);
+            result = this.FindToEntity(x => x.AuthUserId == authUserId && x.IsActivated == false, includes: includes);
             return result;
         }
     }

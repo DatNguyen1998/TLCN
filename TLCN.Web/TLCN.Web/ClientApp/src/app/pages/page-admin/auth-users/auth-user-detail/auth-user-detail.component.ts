@@ -138,7 +138,7 @@ export class AuthUserDetailComponent implements OnInit {
             this.modelGetData.name = '';
             this.modelGetData.typeId = '';
         }
-   }
+    }
 
     async provinceOnchanges() {
         try {

@@ -67,6 +67,13 @@ namespace TLCN.Web.Services
             return EntityToViewModel(entity);
         }
 
+        public async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            _repository.Update(entity);
+            await _uow.SaveChangesAsync();
+            return null;
+        }
+
         public async Task<TViewModel> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter = null, params Expression<Func<TEntity, object>>[] includes)
         {
             return EntityToViewModel(await _repository.GetFirstOrDefaultAsync(filter, includes));
@@ -98,5 +105,7 @@ namespace TLCN.Web.Services
         {
             return EntityToViewModel(_repository.Get(filter,includes: includes));
         }
+
+        
     }
 }

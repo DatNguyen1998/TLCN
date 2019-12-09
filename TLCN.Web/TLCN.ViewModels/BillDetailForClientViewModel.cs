@@ -9,6 +9,7 @@ namespace TLCN.ViewModels
         public Guid Id { get; set; }
         public Guid ProductId { get; set; }
         public string ProductName { get; set; }
+        public string ProductCode { get; set; }
         public int Amount { get; set; }
         public double PriceTotal { get; set; }
     }

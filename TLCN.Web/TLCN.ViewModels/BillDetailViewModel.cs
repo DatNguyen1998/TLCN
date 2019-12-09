@@ -9,5 +9,6 @@ namespace TLCN.ViewModels
         public int Amount { get; set; } // số lượng
         public double PriceTotal { get; set; } //giá = số lượng x giá của sản phẩm
         public Guid AuthUserId { get; set; }
+        public bool IsActivated { get; set; }
     }
 }

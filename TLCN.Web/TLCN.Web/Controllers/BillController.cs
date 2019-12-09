@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using TLCN.Web.Services;
 using TLCN.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace TLCN.Web.Controllers
 {
@@ -28,8 +29,9 @@ namespace TLCN.Web.Controllers
         {
             try
             {
-                var bills = _billService.GetAll();
-                return Ok(bills);
+                var bills = _billService.GetAll("AuthUser,Promotions");
+                var result = Mapper.Map<IEnumerable<BillForGridViewModel>>(bills);
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -42,6 +44,8 @@ namespace TLCN.Web.Controllers
         {
             try
             {
+                model.Id = new Guid();
+                model.Status = "Chờ Duyệt";
                 await _billService.CreateAsync(model);
                 return Ok();
             }
@@ -51,9 +55,9 @@ namespace TLCN.Web.Controllers
             }
         }
 
-        [HttpPut("[action]")]
-        [Authorize(Policy = "RequireAdministrator")]
-        public async Task<ActionResult> Update([FromBody] BillViewModel model)
+        [HttpPost("[action]")]
+        [Authorize(Policy = "RequireAdministratorRole")]
+        public async Task<ActionResult> Update([FromBody] BiLLUpdateViewModel model)
         {
             try
             {
@@ -62,7 +66,7 @@ namespace TLCN.Web.Controllers
                 {
                     return BadRequest("Model is not exists");
                 }
-                model_db = model;
+                model_db.Status = model.Status;
                 await _billService.UpdateAsync(model_db, model_db.Id);
                 return Ok();
             }

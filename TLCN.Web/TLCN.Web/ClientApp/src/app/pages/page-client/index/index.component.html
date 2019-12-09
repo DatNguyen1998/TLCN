@@ -8,15 +8,18 @@
             <i class="anticon" nz-icon nzType="search"></i>
           </button>
         </div>
-        <div nz-col nzSpan="1" nzOffset="2" style="margin-top: 10px;">
+        <a style="float:right; padding-right: 50px;" *ngIf="!userName" routerLink="/login">
+          <span style="color: white;">Login</span>
+        </a>
+        <div nz-col nzSpan="1" nzOffset="2" style="margin-top: 10px;"  *ngIf="userName">
           <nz-badge  [(nzCount)]="authenSv.countCart">
             <a routerLink="/index/cart">
               <i nz-icon nzType="shopping-cart" style="font-size: 30px;" nzTheme="outline"></i>
             </a>
            </nz-badge>
         </div>
-        <a style="float:right; padding-right: 50px;" nz-dropdown [nzDropdownMenu]="menu">
-            <nz-avatar nzIcon="user"></nz-avatar><span style="color: white;"> Welcome {{userName}}</span>
+        <a style="float:right; padding-right: 50px;" nz-dropdown [nzDropdownMenu]="menu" *ngIf="userName">
+            <nz-avatar nzIcon="user"></nz-avatar><span style="color: white;">{{userName}}</span>
           </a>
           <nz-dropdown-menu #menu="nzDropdownMenu" style="width: 100px;">
             <ul nz-menu nzSelectable>

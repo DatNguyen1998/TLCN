@@ -20,6 +20,13 @@ export class BillDetailService {
     return res.json();
   }
 
+  async getAllBill() {
+    const res: any = await this.http.get(`/api/Bill/GetAll`).pipe(
+      catchError(this.handleError)
+    ).toPromise();
+    return res.json();
+  }
+
   async add(model: any) {
     try {
       const res: any = await this.http.post(`/api/BillDetail/Add`, model).toPromise();
@@ -35,6 +42,52 @@ export class BillDetailService {
 
   async GetProductForClient(model: any) {
     const res: any = await this.http.post(`/api/BillDetail/GetProductForClient`, model).pipe(
+        catchError(this.handleError)
+    ).toPromise();
+    return res.json();
+  }
+
+  async delete(model: any) {
+    try {
+        const res: any = await this.http.post(`/api/BillDetail/Delete`, model).toPromise();
+        if (res) {
+            return true;
+        }
+        return false;
+    }
+    catch (e) {
+        console.log(e);
+    }
+  }
+
+  async UpdateStatus(model: any) {
+    try {
+      const res: any = await this.http.post(`/api/BillDetail/UpdateStatus`, model).toPromise();
+      if (res) {
+          return true;
+      }
+      return false;
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
+
+  async UpdateBill(model: any) {
+    try {
+      const res: any = await this.http.post(`/api/Bill/Update`, model).toPromise();
+      if (res) {
+          return true;
+      }
+      return false;
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
+
+  async filter(model: any) {
+    const res: any = await this.http.post(`/api/BillDetail/Filter`, model).pipe(
         catchError(this.handleError)
     ).toPromise();
     return res.json();

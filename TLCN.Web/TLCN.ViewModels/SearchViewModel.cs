@@ -14,5 +14,10 @@ namespace TLCN.ViewModels
         public Guid? ProvinceId { get; set; }
         public Guid? MenuId { get; set; }
         public Guid? ProducerId { get; set; }
+        public Guid? AuthUserId { get; set; }
+        public string PromotionCode { get; set; }
+        public double Total { get; set; }
+        public Guid? BillId { get; set; }
+        public string StatusBill { get; set; }
     }
 }

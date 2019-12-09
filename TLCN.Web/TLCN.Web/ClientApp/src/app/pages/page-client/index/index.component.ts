@@ -25,10 +25,10 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    var check = this.authenSv.isLogin();
-    if (!check) {
-      this.router.navigate(['/login']);
-    }
+    // var check = this.authenSv.isLogin();
+    // if (!check) {
+    //   this.router.navigate(['/login']);
+    // }
     this.userName = this.authenSv.currentUser.name;
     this.getDataForTree();
   }
@@ -72,8 +72,13 @@ export class IndexComponent implements OnInit {
 
   async getCart() {
     try {
-      const res: any = await this.billDetailSv.getAll();
-      this.authenSv.countCart = res.length;
+      if(this.authenSv.currentUser.name) {
+        const res: any = await this.billDetailSv.getAll();
+        this.authenSv.countCart = res.length;
+      }
+      else {
+        this.authenSv.countCart = 0;
+      }
     }
     catch(e) {
       console.log(e);

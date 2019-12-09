@@ -13,10 +13,14 @@ import { MenuListComponent } from './pages/page-admin/menu/menu-list/menu-list.c
 import { IndexComponent } from './pages/page-client/index/index.component';
 import { PhoneComponent } from './pages/page-client/phone/phone.component';
 import { CartComponent } from './pages/page-client/cart/cart.component';
+import { PayComponent } from './pages/page-client/pay/pay.component';
+import { BillListComponent } from './pages/page-admin/bills/bill-list/bill-list.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/login' },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     //admin
     { path: 'admin', component: WelcomeAdminComponent , children: [
       { path: 'authUser', component: AuthUserListComponent },
@@ -25,12 +29,15 @@ const routes: Routes = [
       { path: 'menu', component: MenuListComponent },
       { path: 'product', component: ProductListComponent },
       { path: 'promotion', component: PromotionListComponent },
+      { path: 'bill', component: BillListComponent },
     ]},
     //client
     { path: 'index', component: IndexComponent, children: [
       { path: ':menuCode/:productCode', component: PhoneComponent },
       { path: 'cart', component: CartComponent },
     ]},
+
+    { path: 'pay', component: PayComponent },
 
     
 

@@ -79,4 +79,20 @@ export class LoginComponent implements OnInit {
             && this.validateForm.get(formControlName).errors[errorString];
     }
 
+    google() {
+        console.log('google');
+    }
+
+    facebook() {
+        console.log('facebook');
+    }
+
+    forgotPassword() {
+        console.log('forgot password');
+    }
+
+    register() {
+        this.router.navigate(['/register']);
+    }
+
 }

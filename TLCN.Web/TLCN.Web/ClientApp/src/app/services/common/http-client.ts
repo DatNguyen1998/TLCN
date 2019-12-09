@@ -12,6 +12,7 @@ export class HttpClient {
 
     createAuthorizationHeader(headers: Headers) {
         headers.append('Content-Type', 'application/json');
+        console.log(this.auth.currentUser.token);
         headers.append('Authorization', 'Bearer ' +  this.auth.currentUser.token);
     }
 

@@ -74,7 +74,7 @@ export class AuthUserService {
         catchError(this.handleError)
     ).toPromise();
     return res.json();
-}
+  }
 
 
   handleError(error) {

@@ -9,11 +9,10 @@ namespace TLCN.Models
 {
     public class Bill: AuditableEntity
     {
-        [StringLength(50)]
-        public string Code { get; set; }
         public Guid AuthUserId { get; set; }   // tài khoản khách hàng
         public double Total { get; set; }  //  tổng hóa đơn
         public Guid? PromotionId { get; set; }  // mã khuyến mãi 
+        public string Status { get; set; }
 
         public virtual AuthUser AuthUser { get; set; }
         public virtual ICollection<Promotion> Promotions { get; set; }

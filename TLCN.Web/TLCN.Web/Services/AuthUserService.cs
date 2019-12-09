@@ -33,6 +33,10 @@ namespace TLCN.Web.Services
             {
                 result = this.FindToEntity(x => x.Fullname == model.Name, includes: includes);
             }
+            if (model.Id != null)
+            {
+                result = this.FindToEntity(x => x.Id == model.Id, includes: includes);
+            }
             return result;
         }
 

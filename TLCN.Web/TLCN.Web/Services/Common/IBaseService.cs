@@ -14,6 +14,7 @@ namespace TLCN.Web.Services
         Task CreateAsync(TViewModel viewModel);
 
         Task<TViewModel> UpdateAsync(TViewModel viewModel, object id);
+        Task<TEntity> UpdateAsync(TEntity entity);
 
         Task DeleteAsync(object id);
 
