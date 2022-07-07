@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFrameworkCore.Extensions" Version="1.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.AutoHistory" Version="2.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
