@@ -17,7 +17,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.AutoHistory" Version="2.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.4.0" />
     <PackageReference Include="System.Linq.Dynamic" Version="1.0.7" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.19" />
   </ItemGroup>
